@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CharacterMovingComponent : MonoBehaviour
+public class CharacterMovingComponentv2 : MonoBehaviour
 {
     Rigidbody RigidBody;
     bool isMouseLocked;
@@ -26,6 +26,11 @@ public class CharacterMovingComponent : MonoBehaviour
         Move();
         Jump();
         Rotate();
+        PutRight();
+    }
+
+    void PutRight() {
+        transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     void Jump()
