@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterCameraComponent : MonoBehaviour
 {
     public float CameraSpeed = 100f;
-
+    float Rotation;
     // Update is called once per frame
     void Update()
     {
@@ -15,6 +15,6 @@ public class CharacterCameraComponent : MonoBehaviour
 
     private void Rotate()
     {
-        transform.Rotate(Input.GetAxis("Mouse Y") * Time.deltaTime * CameraSpeed, 0, 0);
+        transform.Rotate(-Input.GetAxis("Mouse Y") * Time.deltaTime * CameraSpeed, 0, 0);
     }
 }

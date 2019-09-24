@@ -26,11 +26,6 @@ public class CharacterMovingComponentv2 : MonoBehaviour
         Move();
         Jump();
         Rotate();
-        PutRight();
-    }
-
-    void PutRight() {
-        transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     void Jump()
