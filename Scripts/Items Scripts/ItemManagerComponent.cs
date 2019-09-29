@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ItemManagerComponent : MonoBehaviour
 {
-    Object[] itemsList;
+    Object[] itemsPrefabList;
     ItemSpawnerComponent[] spawners;
-    public float timeBetweenEachItemSpawn = 300;
+
+    [SerializeField]
+    float timeBetweenEachItemSpawn = 300;
     float timeBeforeSpawning;
 
     private void Start()
     {
         spawners = FindObjectsOfType<ItemSpawnerComponent>();
-        itemsList = Resources.LoadAll("Items");
+        itemsPrefabList = Resources.LoadAll("Items");
         timeBeforeSpawning = timeBetweenEachItemSpawn;
     }
 
@@ -28,7 +30,7 @@ public class ItemManagerComponent : MonoBehaviour
     }
     public void instantiateItems() {
         foreach (var spawner in spawners) {
-            spawner.instantiateItem((GameObject)itemsList[Random.Range(0, itemsList.Length)]);
+            spawner.instantiateItem((GameObject)itemsPrefabList[Random.Range(0, itemsPrefabList.Length)]);
         }
     }
 }

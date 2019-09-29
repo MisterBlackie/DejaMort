@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IHealingItem : IItem{
-    int HealthToRestore { get; }
-
-    int Use(GameObject objectToHeal);
+public interface IHealingItem : IItem
+{
+    int healthToRestore { get; }
 }
