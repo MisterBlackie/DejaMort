@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterMovingComponentv2 : MonoBehaviour
 {
     Rigidbody RigidBody;
-    bool isMouseLocked;
+    public bool isMouseLocked { get; private set; }
 
     public float MovementSpeed = 10f;
     public float CameraSpeed = 100f;
@@ -48,14 +48,14 @@ public class CharacterMovingComponentv2 : MonoBehaviour
             transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * CameraSpeed, 0);
     }
 
-    private void LockMouse() {
+    public void LockMouse() {
         Cursor.lockState = CursorLockMode.Locked;
         isMouseLocked = true;
     }
 
-    private void UnlockMouse()
+    public void UnlockMouse()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         isMouseLocked = false;
     }

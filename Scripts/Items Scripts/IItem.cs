@@ -9,7 +9,7 @@ public interface IItem {
     
     string description { get; }
     
-    Image displayImage { get; }
+    Sprite displayImage { get; }
 
     void Use();
 }

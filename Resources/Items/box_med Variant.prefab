@@ -25,6 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4e1b6eeca20af4d8a7d1d373ad44f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &6741713415547863388
 PrefabInstance:
   m_ObjectHideFlags: 0

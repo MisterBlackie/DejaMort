@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraSpeed: 100
+  movingComponent: {fileID: 8976811205713627077}
 --- !u!1 &7280860664648731086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 7280860663907415694}
+  itemPickUpPanel: {fileID: 0}
 --- !u!114 &8960410802436616136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,6 +1562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcfc6b2df43672448b8eb7bb3923620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUIPrefab: {fileID: 3026127195415319354, guid: a1541c6c5f183b1428c6fe6e67598f8e,
+    type: 3}
+  inventoryKey: 105
 --- !u!1 &7280860664648922408
 GameObject:
   m_ObjectHideFlags: 0
