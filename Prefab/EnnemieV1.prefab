@@ -419,11 +419,10 @@ GameObject:
   - component: {fileID: 4958072732469316214}
   - component: {fileID: 4958072732469316217}
   - component: {fileID: 4958072732469316216}
-  - component: {fileID: 4958072732469316219}
   - component: {fileID: 4958072732469316215}
-  - component: {fileID: 4958072732469316212}
   - component: {fileID: 4958072732469316213}
-  - component: {fileID: 4623421194322964617}
+  - component: {fileID: 8530983345876424506}
+  - component: {fileID: 8002558796775358325}
   m_Layer: 0
   m_Name: EnnemieV1
   m_TagString: ennemi
@@ -482,20 +481,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4958072732469316219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4958072732469316218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 321864f07fd4ccd4b86cd1f2795619f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookRadius: 25
-  Zombie: {fileID: 4958072733754576388}
 --- !u!54 &4958072732469316215
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -512,20 +497,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4958072732469316212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4958072732469316218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c0ec30c4962b045b2f87d158ea612b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 100
-  wanderTimer: 5
 --- !u!33 &4958072732469316213
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -534,7 +505,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4958072732469316218}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &4623421194322964617
+--- !u!114 &8530983345876424506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -543,10 +514,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4958072732469316218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecab6bca036d0c439f97511c7badf6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 378ed07376a4fbc49aa2bb495af0194d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTarget: {fileID: 0}
+  lookRadius: 10
+  Zombie: {fileID: 4958072733754576388}
+--- !u!114 &8002558796775358325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958072732469316218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb75db9fe020ec441a8ef91e93bae66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 200
+  wanderTimer: 5
 --- !u!1 &4958072732476183315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1374,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4958072733217286254}
   - component: {fileID: 4958072733217286255}
-  - component: {fileID: 3108066092776599873}
   m_Layer: 0
   m_Name: R Spine
   m_TagString: Untagged
@@ -1469,19 +1454,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.010578424, y: -0.040485766, z: 0.2867816}
     m_Extent: {x: 0.16834362, y: 0.11889385, z: 0.22239278}
   m_DirtyAABB: 0
---- !u!114 &3108066092776599873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4958072733217286289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecab6bca036d0c439f97511c7badf6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myTarget: {fileID: 0}
 --- !u!1 &4958072733245798984
 GameObject:
   m_ObjectHideFlags: 0

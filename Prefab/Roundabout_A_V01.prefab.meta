@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 009b8e78a1cfd1042b2c2e623aaf10a5
+guid: 8c497af37d95e9d438dd3d632f3741b3
 labels:
 - roundabout
-NativeFormatImporter:
+PrefabImporter:
   externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
