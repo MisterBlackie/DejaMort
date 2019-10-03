@@ -34,9 +34,15 @@ public class InventoryComponent : MonoBehaviour
 
     private void GetItemCases() {
         var itemCases = inventoryUI.GetComponentsInChildren<ItemCaseComponent>();
+
+        int Compteur = 0;
         foreach (ItemCaseComponent itemCase in itemCases)
         {
+            itemCase.ID = Compteur;
+            itemCase.inventory = this;
+
             inventorySpaces.Add(itemCase);
+            Compteur++;
         }
     }
 
