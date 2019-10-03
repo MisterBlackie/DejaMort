@@ -20,6 +20,7 @@ public class SpawnerV3 : MonoBehaviour
     private void Update()
     {
         CheckDistance();
+
     }
 
     void SetInitiateReference()
@@ -46,10 +47,11 @@ public class SpawnerV3 : MonoBehaviour
     {
         for (int i = 0; i < NumberToSpawn; i++)
         {
-            spawnPosition = myTransform.position + Random.insideUnitSphere;
+            spawnPosition = myTransform.position + Random.insideUnitSphere * 5;
 
-            Instantiate(objectToSpawn, spawnPosition, myTransform.rotation);
-            Vector3 newSpawnPos = new Vector3(spawnPosition.x, 0.5f, spawnPosition.z); Instantiate(objectToSpawn, newSpawnPos, transform.rotation);
+          //  Instantiate(objectToSpawn, spawnPosition, myTransform.rotation);
+           Vector3 newSpawnPos = new Vector3(spawnPosition.x, 0.5f, spawnPosition.z); 
+            Instantiate(objectToSpawn, newSpawnPos, transform.rotation);
           
         }
     }
