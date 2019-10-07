@@ -34,9 +34,15 @@ public class InventoryComponent : MonoBehaviour
 
     private void GetItemCases() {
         var itemCases = inventoryUI.GetComponentsInChildren<ItemCaseComponent>();
+
+        int Compteur = 0;
         foreach (ItemCaseComponent itemCase in itemCases)
         {
+            itemCase.ID = Compteur;
+            itemCase.inventory = this;
+
             inventorySpaces.Add(itemCase);
+            Compteur++;
         }
     }
 
@@ -57,13 +63,16 @@ public class InventoryComponent : MonoBehaviour
         return itemAdded;
     }
 
-    public void UseItem(int index)
+    public bool UseItem(int index)
     {
         if (index < inventory.Count && index >= 0)
         {
             inventory[index].Use();
             inventory.RemoveAt(index);
+            return true;
         }
+
+        return false;
     }
 
     private void toggleInventoryUI() {
