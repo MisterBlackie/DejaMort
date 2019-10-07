@@ -1449,9 +1449,11 @@ GameObject:
   - component: {fileID: 8976811205713627077}
   - component: {fileID: -2684396822778245404}
   - component: {fileID: 8960410802436616136}
+  - component: {fileID: 5566466739243631127}
+  - component: {fileID: -90585245134623026}
   m_Layer: 0
   m_Name: HuMan
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,6 +1567,30 @@ MonoBehaviour:
   inventoryUIPrefab: {fileID: 3026127195415319354, guid: a1541c6c5f183b1428c6fe6e67598f8e,
     type: 3}
   inventoryKey: 105
+--- !u!114 &5566466739243631127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280860664648920844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada3335633e16084fb711b6cc0dbfb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-90585245134623026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280860664648920844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7922f03ea0d97b24ab92ef79be1b55ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7280860664648922408
 GameObject:
   m_ObjectHideFlags: 0
