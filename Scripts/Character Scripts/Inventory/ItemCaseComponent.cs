@@ -43,8 +43,17 @@ public class ItemCaseComponent : MonoBehaviour
         }
     }
 
+    private void HideActionMenu() {
+        itemMenu.SetActive(false);
+    }
+
     public void setItem(IItem item) {
         this.item = item;
+    }
+
+    public void removeItem() {
+        item = null;
+        hideImage();
     }
 
     public void showImage()
@@ -52,9 +61,16 @@ public class ItemCaseComponent : MonoBehaviour
         imageCase.sprite = item.displayImage;
     }
 
+    public void hideImage() {
+        imageCase.sprite = null;
+    }
+
     private void UseItem() {
         Debug.Assert(item != null);
 
-        inventory.UseItem(ID);
+        if (inventory.UseItem(ID))
+            removeItem();
+
+        HideActionMenu();
     }
 }
