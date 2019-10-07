@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterCameraComponentV2))]
 [RequireComponent(typeof(CharacterMovingComponentv2))]
 [RequireComponent(typeof(ItemPickUpComponent))]
-[RequireComponent(typeof(HealthComponent))]
 public class PlayerComponent : MonoBehaviour
 {
     
