@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Bandage : ScriptableObject, IHealingItem
+public class Bandage : MonoBehaviour, IHealingItem
 {
     public int healthToRestore { get; private set; } = 20;
     public string itemName { get; private set; } = "Bandage";
     public string description { get; private set; } = "Un bandage qui soigne vos bobos.";
     public Sprite displayImage { get; private set; }
+
+    public bool hasBeenPickupOnce { get; private set; } = false;
 
     void Awake()
     {
@@ -25,6 +27,23 @@ public class Bandage : ScriptableObject, IHealingItem
         HealthComponent playerHealth = player.GetComponent<HealthComponent>();
 
         playerHealth.RestoreHealth(healthToRestore);
+
+        OnUse();
     }
 
+    public void OnPickup()
+    {
+        gameObject.SetActive(false);
+        hasBeenPickupOnce = true;
+    }
+
+    public void OnDrop()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void OnUse()
+    {
+        Destroy(this);
+    }
 }

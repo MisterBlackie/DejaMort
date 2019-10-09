@@ -7,9 +7,18 @@ public class ItemSpawnerComponent : MonoBehaviour
     GameObject lastItem;
 
     public void instantiateItem(GameObject item) {
-        if (lastItem == null) // Pour ne pas spawn plusieurs items un par dessus l'autre
+        if (ShouldSpawn()) // Pour ne pas spawn plusieurs items un par dessus l'autre
         {
             lastItem = Instantiate(item, transform.position, Quaternion.identity);
         }
+    }
+
+    private bool ShouldSpawn() {
+        if (lastItem == null)
+            return true;
+        else if (lastItem.GetComponent<IItem>().hasBeenPickupOnce)
+            return true;
+        else
+            return false;
     }
 }

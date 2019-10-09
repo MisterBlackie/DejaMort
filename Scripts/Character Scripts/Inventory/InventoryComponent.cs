@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InventoryComponent : MonoBehaviour
 {
-    private List<IItem> inventory;
+    private List<GameObject> inventory;
 
     [SerializeField]
     private GameObject inventoryUIPrefab;
@@ -16,11 +16,15 @@ public class InventoryComponent : MonoBehaviour
     private GameObject inventoryUI;
     private List<ItemCaseComponent> inventorySpaces = new List<ItemCaseComponent>();
     private CharacterMovingComponentv2 characterMovingComp;
+
+    public event EventHandler<InventoryEventArgs> ItemAdded;
+
+
     void Awake()
     {
         characterMovingComp = GetComponent<CharacterMovingComponentv2>();
 
-        inventory = new List<IItem>();
+        inventory = new List<GameObject>();
         inventoryUI = Instantiate(inventoryUIPrefab);
         inventoryUI.SetActive(false); // Honnêtement, je devrais pas à faire ça ici, à changer
         GetItemCases();
@@ -46,18 +50,22 @@ public class InventoryComponent : MonoBehaviour
         }
     }
 
-    public bool AddItem(IItem item) {
+    public bool AddItem(GameObject itemObject) {
         bool itemAdded = false;
 
         // En ce moment, la maximum d'espace d'inventaire est le nombre de case dans l'UI
         if (inventory.Count >= inventorySpaces.Count)
             throw new InventoryFullException();
 
-        if (item != null)
+        if (itemObject != null)
         {
-            inventory.Add(item);
+            inventory.Add(itemObject);
             itemAdded = true;
-            
+
+            IItem item = itemObject.GetComponent<IItem>();
+
+            item.OnPickup();
+            ItemAdded?.Invoke(this, new InventoryEventArgs(item));
         }
 
         return itemAdded;
@@ -67,7 +75,7 @@ public class InventoryComponent : MonoBehaviour
     {
         if (index < inventory.Count && index >= 0)
         {
-            inventory[index].Use();
+            inventory[index].GetComponent<IItem>()?.Use();
             inventory.RemoveAt(index);
             return true;
         }
@@ -92,7 +100,7 @@ public class InventoryComponent : MonoBehaviour
 
     private void showInventoryOnUI() {
         for (int i = 0; i < inventory.Count; i++) {
-            inventorySpaces[i].setItem(inventory[i]);
+            inventorySpaces[i].setItem(inventory[i].GetComponent<IItem>());
             inventorySpaces[i].showImage();
         }
 
@@ -102,4 +110,12 @@ public class InventoryComponent : MonoBehaviour
 
 public class InventoryFullException : Exception {
     // TODO
+}
+
+public class InventoryEventArgs : EventArgs {
+    public InventoryEventArgs(IItem Item) {
+        item = Item;
+    }
+
+    public IItem item;
 }

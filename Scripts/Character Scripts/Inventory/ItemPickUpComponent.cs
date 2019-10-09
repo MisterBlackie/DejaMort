@@ -47,7 +47,7 @@ public class ItemPickUpComponent : MonoBehaviour
 
                 GameObject item = hit.collider.gameObject;
 
-                if (item.GetComponent<ITakeable>() != null)
+                if (item.GetComponent<IItem>() != null)
                 {
                     if (itemBeingPickUp != item)
                     {
@@ -74,8 +74,8 @@ public class ItemPickUpComponent : MonoBehaviour
     private void Take() {
         Debug.Assert(itemBeingPickUp != null);
 
-        if (inventory.AddItem(itemBeingPickUp.GetComponent<ITakeable>().item)) {
-            Destroy(itemBeingPickUp);
+        if (inventory.AddItem(itemBeingPickUp)) {
+            
             itemBeingPickUp = null;
             itemPickUpPanel.SetActive(false);
         }

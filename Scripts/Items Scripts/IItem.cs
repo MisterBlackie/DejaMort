@@ -11,5 +11,13 @@ public interface IItem {
     
     Sprite displayImage { get; }
 
+    bool hasBeenPickupOnce { get;  }
+
     void Use();
+
+    void OnPickup();
+
+    void OnDrop();
+
+    void OnUse();
 }
