@@ -10,7 +10,7 @@ public class CharacterMovingComponentv2 : MonoBehaviour
 
     public float MovementSpeed = 10f;
     public float CameraSpeed = 100f;
-    public float JumpSpeed = 2f;
+    public float JumpSpeed = 10f;
 
     bool isGrounded; // Permet de savoir si l'objet est par terre
     // Start is called before the first frame update

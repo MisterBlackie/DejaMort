@@ -24,7 +24,6 @@ public class CharacterCameraComponentV2 : MonoBehaviour
         {
             angle += -Input.GetAxis("Mouse Y") * Time.deltaTime * CameraSpeed;
             angle = Mathf.Clamp(angle, -maxAngle, maxAngle);
-            //transform.Rotate(-Input.GetAxis("Mouse Y") * Time.deltaTime * CameraSpeed, 0, 0);
             transform.eulerAngles = new Vector3(angle, transform.eulerAngles.y, transform.eulerAngles.z);
         }
     }
