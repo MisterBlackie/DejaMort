@@ -34,6 +34,7 @@ public class HealthComponent : MonoBehaviour
 
 
         if (IsDead()) {
+            Debug.Log("Dead");
             // Afficher écran mort
             // Vider inventaire
             // Reset statistiques

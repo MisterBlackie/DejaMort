@@ -48,6 +48,7 @@ public class CharacterMovingComponentv2 : MonoBehaviour
             transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * CameraSpeed, 0);
     }
 
+
     public void LockMouse() {
         Cursor.lockState = CursorLockMode.Locked;
         isMouseLocked = true;
