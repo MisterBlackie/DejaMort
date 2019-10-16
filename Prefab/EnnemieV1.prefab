@@ -423,6 +423,11 @@ GameObject:
   - component: {fileID: 4958072732469316213}
   - component: {fileID: 8530983345876424506}
   - component: {fileID: 8002558796775358325}
+  - component: {fileID: 406374064592611362}
+  - component: {fileID: 4737996161838592094}
+  - component: {fileID: 7344833482110585796}
+  - component: {fileID: 8065801071226796469}
+  - component: {fileID: 7688346565716041230}
   m_Layer: 0
   m_Name: EnnemieV1
   m_TagString: ennemi
@@ -437,7 +442,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4958072732469316218}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.020973, y: 0.4385735, z: 50.73253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -473,7 +478,7 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -512,14 +517,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4958072732469316218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 378ed07376a4fbc49aa2bb495af0194d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  Zombie: {fileID: 4958072733754576388}
+  Zombie: {fileID: 4958072732469316218}
 --- !u!114 &8002558796775358325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958072732469316218}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb75db9fe020ec441a8ef91e93bae66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 200
+  wanderTimer: 5
+--- !u!114 &406374064592611362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -528,11 +547,67 @@ MonoBehaviour:
   m_GameObject: {fileID: 4958072732469316218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb75db9fe020ec441a8ef91e93bae66c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dd4407cbfbd65549921417cc5b9aef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 200
-  wanderTimer: 5
+--- !u!114 &4737996161838592094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958072732469316218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7d80d87a5913448990871ef2fbf374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 4958072733129469976}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  sightLayer:
+    serializedVersion: 2
+    m_Bits: 273
+--- !u!114 &7344833482110585796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958072732469316218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06e0467a40c4f7478cb555b47a0278d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTarget: {fileID: 0}
+  isOnRoute: 0
+  isNavPaused: 0
+--- !u!114 &8065801071226796469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958072732469316218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7577f6b1067149f498552f6a8c69e655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7688346565716041230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958072732469316218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2068b3366d6b1d4e95ecc620d2be753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4958072732476183315
 GameObject:
   m_ObjectHideFlags: 0

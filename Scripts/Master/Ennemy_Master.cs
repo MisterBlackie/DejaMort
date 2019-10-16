@@ -18,6 +18,8 @@ public class Ennemy_Master : MonoBehaviour
 
     public delegate void NavTargetEventHandler(Transform TargetTransform);
     public event NavTargetEventHandler EventEnnemySetNavTarget;
+    public bool isOnRoute;
+    public bool isNavPaused;
 
     public void CallEventEventEnnemyDeductHealth(int health)
     {

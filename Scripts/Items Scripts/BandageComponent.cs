@@ -9,8 +9,8 @@ public class BandageComponent : MonoBehaviour, ITakeable
     private void Awake()
     {
         // TODO: si l'item est droppé de l'inventaire, assigné cet objet
-        if (item == null)
-            item = ScriptableObject.CreateInstance<Bandage>();
+       // if (item == null)
+        //    item = ScriptableObject.CreateInstance<Bandage>();
     }
     
 
