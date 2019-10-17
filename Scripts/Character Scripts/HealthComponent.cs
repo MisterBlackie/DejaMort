@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    private int _healthLevel;
+    public int _healthLevel;
 
     private int healthLevel {
         get {
@@ -43,5 +43,16 @@ public class HealthComponent : MonoBehaviour
 
     public void RestoreHealth(int HealhPoint) {
         healthLevel += HealhPoint;
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this , null);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        healthLevel = data.health;
     }
 }

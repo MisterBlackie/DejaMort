@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+[System.Serializable]
+public class PlayerData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int health;
+    public float[] position;
 
-    // Update is called once per frame
-    void Update()
+    public PlayerData(HealthComponent healthComponent , PlayerComponent player)
     {
-        
+        health = healthComponent._healthLevel;
+        position = new float[3];
+        position[0] = player.transform.position.x;
+        position[1] = player.transform.position.y;
+        position[2] = player.transform.position.z;
     }
 }
