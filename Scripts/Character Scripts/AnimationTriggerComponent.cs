@@ -12,8 +12,8 @@ public class AnimationTriggerComponent : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         HealthComponent health = GetComponent<HealthComponent>();
-        if (health != null)
-            health.OnDeath += (s, a) => animator.SetTrigger("DeathTrigger");
+        if (health != null) ;
+            //health.OnDeath += (s, a) => animator.SetTrigger("DeathTrigger");
     }
 
     // Update is called once per frame

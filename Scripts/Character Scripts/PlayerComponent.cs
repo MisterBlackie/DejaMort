@@ -9,6 +9,17 @@ using UnityEngine;
 [RequireComponent(typeof(AttackComponent))]
 public class PlayerComponent : MonoBehaviour
 {
+    
+    private void OnEnable()
+    {
+        vie = GetComponent<HealthComponent>();
+        if (SwitchScene.IsPlayerLoad == true )
+        {
+            LoadPlayer();
+        }
+        
+    }
+    private HealthComponent vie;
     public static PlayerComponent instance { get; private set; }
 
     public IInterableItem equippedItem { get; set; }
@@ -21,7 +32,8 @@ public class PlayerComponent : MonoBehaviour
 
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(null, this);
+      
+        SaveSystem.SavePlayer(vie, this);
     }
 
     public void LoadPlayer()
@@ -32,5 +44,7 @@ public class PlayerComponent : MonoBehaviour
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
+        transform.position = position;
+        
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
     public int _healthLevel;
-
-    public event EventHandler<OnDamageTakenArgs> OnDamageTaken;
-    public event EventHandler<OnDeathArgs> OnDeath;
 
     private int healthLevel {
         get {
@@ -35,11 +31,10 @@ public class HealthComponent : MonoBehaviour
     public void TakeDamage(int healthPoint) {
 
         healthLevel -= healthPoint;
-        OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
+
 
         if (IsDead()) {
             Debug.Log("Dead");
-            OnDeath?.Invoke(this, new OnDeathArgs());
             // Afficher écran mort
             // Vider inventaire
             // Reset statistiques
@@ -50,30 +45,15 @@ public class HealthComponent : MonoBehaviour
         healthLevel += HealhPoint;
     }
 
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this , null);
-    }
+    //public void SavePlayer()
+    //{
 
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-        healthLevel = data.health;
-    }
-}
+    //    SaveSystem.SavePlayer(this , null);
+    //}
 
-public class OnDamageTakenArgs
-{
-    public int damageTaken;
-    public int healthRemaining;
-
-    public OnDamageTakenArgs(int dmg, int healthLeft) {
-        damageTaken = dmg;
-        healthRemaining = healthLeft;
-    }
-
-}
-
-public class OnDeathArgs {
-   
+    //public void LoadPlayer()
+    //{
+    //    PlayerData data = SaveSystem.LoadPlayer();
+    //    healthLevel = data.health;
+    //}
 }
