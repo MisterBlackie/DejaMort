@@ -8,7 +8,7 @@ public class ItemCaseComponent : MonoBehaviour
 {
     private IItem item;
     public int ID;
-    public InventoryComponent inventory;
+    public HotbarComponent inventory;
 
     private Image imageCase { get; set; }
     private GameObject itemMenu { get; set; }

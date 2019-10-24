@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4199230755349680369}
   - component: {fileID: 4199230755342499609}
-  - component: {fileID: 6635528077563051526}
   - component: {fileID: 2642102475098426255}
+  - component: {fileID: 706451680476403412}
   m_Layer: 0
   m_Name: Sword  Basic
   m_TagString: Untagged
@@ -56,18 +56,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6635528077563051526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4199230755349777617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf51e914019d5646a384a0c6afed540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2642102475098426255
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -81,6 +69,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.22100163, y: 0.09310353, z: 1.0500636}
   m_Center: {x: 0.004706979, y: 0.013293445, z: 0.33956885}
+--- !u!114 &706451680476403412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199230755349777617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf51e914019d5646a384a0c6afed540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4199230755349777625
 GameObject:
   m_ObjectHideFlags: 0

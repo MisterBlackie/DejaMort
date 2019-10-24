@@ -16,9 +16,6 @@ public class ItemSpawnerComponent : MonoBehaviour
     private bool ShouldSpawn() {
         if (lastItem == null)
             return true;
-        else if (lastItem.GetComponent<IItem>().hasBeenPickupOnce)
-            return true;
-        else
-            return false;
+        return lastItem.GetComponent<IItem>().hasBeenPickupOnce;
     }
 }

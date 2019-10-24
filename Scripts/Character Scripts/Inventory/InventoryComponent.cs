@@ -25,8 +25,8 @@ public class InventoryComponent : MonoBehaviour
         characterMovingComp = GetComponent<CharacterMovingComponentv2>();
 
         inventory = new List<GameObject>();
-        inventoryUI = Instantiate(inventoryUIPrefab);
-        inventoryUI.SetActive(false); // Honnêtement, je devrais pas à faire ça ici, à changer
+       // inventoryUI = Instantiate(inventoryUIPrefab);
+        //inventoryUI.SetActive(false); // Honnêtement, je devrais pas à faire ça ici, à changer
         GetItemCases();
     }
 
@@ -43,7 +43,7 @@ public class InventoryComponent : MonoBehaviour
         foreach (ItemCaseComponent itemCase in itemCases)
         {
             itemCase.ID = Compteur;
-            itemCase.inventory = this;
+            //itemCase.inventory = this;
 
             inventorySpaces.Add(itemCase);
             Compteur++;

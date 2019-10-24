@@ -1070,12 +1070,12 @@ GameObject:
   - component: {fileID: 95799477880951556}
   - component: {fileID: 6336683625595290171}
   - component: {fileID: 1187245408658537187}
-  - component: {fileID: 8686223575330429665}
   - component: {fileID: 2926433616157763852}
   - component: {fileID: 5810941787715007139}
   - component: {fileID: 7337896706877683602}
   - component: {fileID: 7834544314004216606}
   - component: {fileID: 679773713209413427}
+  - component: {fileID: 5604164965569383180}
   m_Layer: 8
   m_Name: SurvivalCharacter_high
   m_TagString: player
@@ -1151,21 +1151,6 @@ MonoBehaviour:
   MovementSpeed: 10
   CameraSpeed: 100
   JumpSpeed: 2
---- !u!114 &8686223575330429665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451630633815714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfcfc6b2df43672448b8eb7bb3923620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUIPrefab: {fileID: 3026127195415319354, guid: a1541c6c5f183b1428c6fe6e67598f8e,
-    type: 3}
-  inventoryKey: 105
 --- !u!114 &2926433616157763852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,6 +1215,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52046c5f5ce59064dbbe3d9f00435741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handAnimator: {fileID: 0}
+--- !u!114 &5604164965569383180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451630633815714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a8526beed65914d8260dbf3529909b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HotbarUIPrefab: {fileID: 7637551381526467963, guid: 2f9d3475dade4e7498a16608facce731,
+    type: 3}
+  inventoryKey: 105
 --- !u!1 &1453964692339728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,11 +2675,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4701023620219376}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 3c2b8b631d7a8844884d24718ec8d0f2,
-        type: 3}
-      propertyPath: m_Name
-      value: TestArms Bake
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3c2b8b631d7a8844884d24718ec8d0f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2749,6 +2745,16 @@ PrefabInstance:
       propertyPath: field of view
       value: 114
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3c2b8b631d7a8844884d24718ec8d0f2,
+        type: 3}
+      propertyPath: m_Name
+      value: TestArms Bake
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 3c2b8b631d7a8844884d24718ec8d0f2,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b308ebe379c22724e841611cf6e8b334, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c2b8b631d7a8844884d24718ec8d0f2, type: 3}
 --- !u!4 &650924183900955143 stripped

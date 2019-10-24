@@ -14,7 +14,7 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public Sprite displayImage { get; private set; }
 
-    public bool hasBeenPickupOnce { get; private set; }
+    public bool hasBeenPickupOnce { get; private set; } = false;
 
     public Vector3 HandPosition { get; private set; }
 

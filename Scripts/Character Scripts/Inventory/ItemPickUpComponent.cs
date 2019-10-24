@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(InventoryComponent))]
+[RequireComponent(typeof(HotbarComponent))]
 public class ItemPickUpComponent : MonoBehaviour
 {
     [SerializeField]
@@ -14,12 +14,12 @@ public class ItemPickUpComponent : MonoBehaviour
     private GameObject itemPickUpPanel;
 
 
-    private InventoryComponent inventory;
+    private HotbarComponent inventory;
     private GameObject itemBeingPickUp;
 
     public void Awake()
     {
-        inventory = GetComponent<InventoryComponent>();
+        inventory = GetComponent<HotbarComponent>();
         itemPickUpPanel.SetActive(false);
     }
 

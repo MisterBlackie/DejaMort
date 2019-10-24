@@ -6,14 +6,16 @@ using UnityEngine;
 public class AnimationTriggerComponent : MonoBehaviour
 {
     Animator animator;
+    [SerializeField]
+    Animator handAnimator;
     bool isIdle = true;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         HealthComponent health = GetComponent<HealthComponent>();
-        if (health != null) ;
-            //health.OnDeath += (s, a) => animator.SetTrigger("DeathTrigger");
+        if (health != null)
+            health.OnDeath += (s, a) => animator.SetTrigger("DeathTrigger");
     }
 
     // Update is called once per frame
