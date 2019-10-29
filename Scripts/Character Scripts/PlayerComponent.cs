@@ -33,7 +33,7 @@ public class PlayerComponent : MonoBehaviour
     public void SavePlayer()
     {
       
-        SaveSystem.SavePlayer(vie, this);
+        SaveSystem.SavePlayer( this);
     }
 
     public void LoadPlayer()
