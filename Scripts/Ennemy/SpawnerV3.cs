@@ -8,7 +8,7 @@ public class SpawnerV3 : MonoBehaviour
     public int NumberToSpawn;
     public float proximity;
     private float checkrate;
-    private float nextCheck;
+    private float nextCheck = 100; 
     private Transform myTransform;
     private Transform playerTransform;
     private Vector3 spawnPosition;
@@ -35,10 +35,11 @@ public class SpawnerV3 : MonoBehaviour
         if (Time.time > nextCheck)
         {
             nextCheck = Time.time + checkrate;
-            if (Vector3.Distance(myTransform.position, playerTransform.position) < proximity)
+            if (Vector3.Distance(myTransform.position, playerTransform.position) > proximity)
             {
                 SpawnObject();
-                this.enabled = false;
+                nextCheck *= 2;
+                //this.enabled = false;
             }
         }
     }
