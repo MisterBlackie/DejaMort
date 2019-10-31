@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackComponent : MonoBehaviour
 {
     private Camera _camera;
+    public event EventHandler<PrimaryAttackArgs> OnPrimaryAttack;
 
     private void Awake()
     {
@@ -26,11 +28,12 @@ public class AttackComponent : MonoBehaviour
     private void UsePrimary()
     {
         HealthComponent obj = checkRay();
+        int damageDone = PlayerComponent.instance.equippedItem.UsePrimary();
 
         if (obj != null)
-            obj.TakeDamage(PlayerComponent.instance.equippedItem.UsePrimary());
-        
-        // Animatiom
+            obj.TakeDamage(damageDone);
+
+        OnPrimaryAttack?.Invoke(this, new PrimaryAttackArgs(damageDone));
     }
 
     private void UseSecondary() => PlayerComponent.instance.equippedItem.UseSecondary();
@@ -47,5 +50,15 @@ public class AttackComponent : MonoBehaviour
         }
 
         return null;
+    }
+}
+
+public class PrimaryAttackArgs : EventArgs
+{
+    public int Damage;
+
+    public PrimaryAttackArgs(int damage)
+    {
+        Damage = damage;
     }
 }

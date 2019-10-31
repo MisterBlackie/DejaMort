@@ -25,8 +25,8 @@ public class BasicSword : MonoBehaviour, IWeapon
         hasBeenPickupOnce = false;
         displayImage = Resources.Load<Sprite>("Sprite/basicSword");
 
-        HandPosition = new Vector3(0.301f, 1.177f, 0.406f);
-        ObjectRotation = new Vector3(-60.462f, -79.814f, 174.226f);
+        HandPosition = new Vector3(0.000801f, 0.000545f, -0.000149f);
+        ObjectRotation = new Vector3(-14.181f, 87.466f, 86.32001f);
     }
     public bool isBroken() => Durability <= 0;
 
@@ -50,15 +50,15 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public void Use() // Équipe l'arme
     {
-        transform.SetParent(PlayerComponent.instance.gameObject.transform);
-        transform.localPosition = HandPosition;
+        transform.SetParent(PlayerComponent.instance.rightHandJoint.transform);
+        PlayerComponent.instance.equippedItem = this;
         transform.localEulerAngles = ObjectRotation;
+        transform.localPosition = HandPosition;
         gameObject.SetActive(true);
     }
 
     public int UsePrimary()
     {
-        
         return isBroken() ? Damage / 2 : Damage;
     }
 

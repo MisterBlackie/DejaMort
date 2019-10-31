@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class ItemPickUpComponent : MonoBehaviour
     [Tooltip("Panneau affichant les infos de l'item")]
     private GameObject itemPickUpPanel;
 
+    public event EventHandler<ItemPickedArgs> OnPickup;
 
     private HotbarComponent inventory;
     private GameObject itemBeingPickUp;
@@ -75,9 +77,18 @@ public class ItemPickUpComponent : MonoBehaviour
         Debug.Assert(itemBeingPickUp != null);
 
         if (inventory.AddItem(itemBeingPickUp)) {
-            
-            itemBeingPickUp = null;
+           
             itemPickUpPanel.SetActive(false);
+            OnPickup?.Invoke(this, new ItemPickedArgs(itemBeingPickUp.GetComponent<IItem>()));
+            itemBeingPickUp = null;
         }
+    }
+}
+
+public class ItemPickedArgs {
+    IItem Item;
+
+    public ItemPickedArgs(IItem item ) {
+        Item = item;
     }
 }
