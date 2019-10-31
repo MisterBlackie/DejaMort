@@ -1590,7 +1590,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546258895396613658}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1546258893987826422}
@@ -2249,8 +2249,6 @@ GameObject:
   - component: {fileID: 1546258895925759627}
   - component: {fileID: 1546258895925759620}
   - component: {fileID: 1546258895925759622}
-  - component: {fileID: 2873246547379737545}
-  - component: {fileID: 4518582087886568326}
   - component: {fileID: 1187622931625063597}
   - component: {fileID: 3771168234012397367}
   - component: {fileID: 4491370801406360902}
@@ -2274,7 +2272,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546258895925759625}
-  m_LocalRotation: {x: -0, y: -0.7823954, z: -0, w: 0.62278205}
+  m_LocalRotation: {x: 0, y: -0.78239626, z: 0, w: 0.622781}
   m_LocalPosition: {x: 38.01825, y: 0.4385777, z: 55.621468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2342,34 +2340,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546258895925759625}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2873246547379737545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546258895925759625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378ed07376a4fbc49aa2bb495af0194d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookRadius: 10
-  Zombie: {fileID: 1546258895925759625}
---- !u!114 &4518582087886568326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546258895925759625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb75db9fe020ec441a8ef91e93bae66c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 200
-  wanderTimer: 5
 --- !u!114 &1187622931625063597
 MonoBehaviour:
   m_ObjectHideFlags: 0

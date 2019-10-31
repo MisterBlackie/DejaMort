@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 255441676791662791}
-  - component: {fileID: 255441676791662790}
-  - component: {fileID: 255441676791662793}
+  - component: {fileID: 7881409447156798987}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -32,22 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &255441676791662790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255441676791662788}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a345b82cc6e821d44b3c78353e4943d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  summonedEnnemy: {fileID: 0}
-  Plan: {fileID: 0}
-  Compteur: 0
---- !u!114 &255441676791662793
+--- !u!114 &7881409447156798987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,10 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 255441676791662788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0389762a4e6e64044b408405901af65e, type: 3}
+  m_Script: {fileID: 11500000, guid: 161e25ffa3eda7c4ebccfc467aafe57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 4958072732469316218, guid: ffc61190050bf744dbadf540d150d604,
-    type: 3}
-  NumberToSpawn: 2
-  proximity: 50
+  objectToSpawn: {fileID: 0}
+  NumberToSpawn: 0
+  proximity: 0
