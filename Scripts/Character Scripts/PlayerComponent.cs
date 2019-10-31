@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +8,28 @@ using UnityEngine;
 [RequireComponent(typeof(HealthComponent))]
 [RequireComponent(typeof(AnimationTriggerComponent))]
 [RequireComponent(typeof(AttackComponent))]
+[RequireComponent(typeof(HotbarComponent))]
 public class PlayerComponent : MonoBehaviour
 {
-    
+    private HealthComponent vie;
+    public GameObject rightHandJoint;
+    public static PlayerComponent instance { get; private set; }
+
+    public event EventHandler<EquippedItemChangedArgs> OnEquippedItemChanged;
+
+    IInterableItem _equippedItem;
+    public IInterableItem equippedItem
+    {
+        get => _equippedItem;
+
+        set
+        {
+            IInterableItem lastItem = _equippedItem;
+            _equippedItem = value;
+           OnEquippedItemChanged?.Invoke(this, new EquippedItemChangedArgs(lastItem, value));
+        }
+    }
+
     private void OnEnable()
     {
         vie = GetComponent<HealthComponent>();
@@ -19,14 +39,9 @@ public class PlayerComponent : MonoBehaviour
         }
         
     }
-    private HealthComponent vie;
-    public static PlayerComponent instance { get; private set; }
-
-    public IInterableItem equippedItem { get; set; }
 
     private void Awake()
     {
-        // Pour le multiplayer, on peux faire une liste de PlayerComponent
         instance = this;
     }
 
@@ -46,5 +61,15 @@ public class PlayerComponent : MonoBehaviour
         position.z = data.position[2];
         transform.position = position;
         
+    }
+}
+
+public class EquippedItemChangedArgs {
+    public IInterableItem NewItem;
+    public IInterableItem LastItem;
+    public EquippedItemChangedArgs(IInterableItem newItem, IInterableItem lastItem)
+    {
+        NewItem = newItem;
+        LastItem = lastItem;
     }
 }

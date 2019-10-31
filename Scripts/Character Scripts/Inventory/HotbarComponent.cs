@@ -15,7 +15,9 @@ public class HotbarComponent : MonoBehaviour
     private List<HotbarSpaceComponent> inventorySpaces = new List<HotbarSpaceComponent>();
     
     public event EventHandler<InventoryEventArgs> ItemAdded;
-
+    public event EventHandler<InventoryEventArgs> ItemUsed;
+    public event EventHandler<InventoryEventArgs> ItemDestroyed;
+    public event EventHandler<InventoryEventArgs> ItemDropped;
 
     void Awake()
     {
@@ -93,9 +95,13 @@ public class HotbarComponent : MonoBehaviour
 
         if (inventory[index] != null)
         {
-            inventory[index].GetComponent<IItem>().Use();
+            IItem item = inventory[index].GetComponent<IItem>();
+            item.Use();
             inventory[index] = null;
             inventorySpaces[index].HideImage();
+
+            ItemUsed?.Invoke(this, new InventoryEventArgs(item));
+
             return true;
         }
 
