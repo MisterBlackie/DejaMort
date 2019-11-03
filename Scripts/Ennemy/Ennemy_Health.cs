@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ennemy_Health : MonoBehaviour
+public class Ennemy_Health : HealthComponent
 {
     private Ennemy_Master ennemyMaster;
-    public int ennemyhealth = 100;
     private void OnEnable()
     {
         SetInitialReferences();
-        ennemyMaster.EventEnnemyDeductHealth += DeductHealth;
+        ennemyMaster.EventEnnemyDeductHealth += TakeDamage;
     }
 
     private void OnDisable()
     {
-        ennemyMaster.EventEnnemyDeductHealth -= DeductHealth;
+        ennemyMaster.EventEnnemyDeductHealth -= TakeDamage;
     }
 
     void SetInitialReferences()
@@ -22,14 +21,15 @@ public class Ennemy_Health : MonoBehaviour
         ennemyMaster = GetComponent<Ennemy_Master>();
     }
 
-    void DeductHealth(int healthChange)
+    public override void TakeDamage(int healthPoint)
     {
-        ennemyhealth -= healthChange;
-        if (ennemyhealth <= 0)
+        healthLevel -= healthPoint;
+
+        if (IsDead())
         {
-            ennemyhealth = 0;
+            healthLevel = 0;
             ennemyMaster.CallEventEnnemyDie();
-            Destroy(gameObject , Random.Range(10,20));
+            Destroy(gameObject/*, Random.Range(10,20)*/);
         }
     }
 }

@@ -10,7 +10,7 @@ public class HealthComponent : MonoBehaviour
     public event EventHandler<OnDamageTakenArgs> OnDamageTaken;
     public event EventHandler<OnDeathArgs> OnDeath;
 
-    private int healthLevel {
+    protected int healthLevel {
         get {
             return _healthLevel;
         }
@@ -32,17 +32,14 @@ public class HealthComponent : MonoBehaviour
 
     public bool IsDead() => healthLevel <= 0;
 
-    public void TakeDamage(int healthPoint) {
+    public virtual void TakeDamage(int healthPoint) {
 
         healthLevel -= healthPoint;
         OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
-
+        Debug.Log(healthLevel);
         if (IsDead()) {
             Debug.Log("Dead");
             OnDeath?.Invoke(this, new OnDeathArgs());
-            // Afficher écran mort
-            // Vider inventaire
-            // Reset statistiques
         }
     }
 

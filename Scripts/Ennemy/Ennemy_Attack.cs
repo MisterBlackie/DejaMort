@@ -11,7 +11,7 @@ public class Ennemy_Attack : MonoBehaviour
     public float attackRate = 1;
     private float nextAttack;
     public float attackRamge = 3.5f;
-    public int attackDamge = 10;
+    public int attackDamge = 33;
 
 
     private void OnEnable()
@@ -19,12 +19,14 @@ public class Ennemy_Attack : MonoBehaviour
         SetInitialReferences();
         ennemyMaster.EventEnnemyDie += DisableThis;
         ennemyMaster.EventEnnemySetNavTarget += SetAttackTarget;
+        ennemyMaster.EventEnnemyAttack += OnEnnemyAttack;
     }
 
     private void OnDisable()
     {
         ennemyMaster.EventEnnemyDie -= DisableThis;
         ennemyMaster.EventEnnemySetNavTarget -= SetAttackTarget;
+        ennemyMaster.EventEnnemyAttack -= OnEnnemyAttack;
     }
     private void Update()
     {
@@ -63,13 +65,12 @@ public class Ennemy_Attack : MonoBehaviour
     {
         if (attackTarget != null)
         {
-            if (Vector3.Distance(myTransform.position , attackTarget.position) <= attackRamge &&
-                attackTarget.GetComponent<PlayerManager>() != null)
+            if (Vector3.Distance(myTransform.position , attackTarget.position) <= attackRamge)
             {
                 Vector3 toOther = attackTarget.position - myTransform.position;
                 if (Vector3.Dot(toOther , myTransform.forward) > 0.5f)
                 {
-                    //attackTarget.GetComponent<PlayerManager>
+                    attackTarget.GetComponent<HealthComponent>()?.TakeDamage(attackDamge);
                 }
             }
         }
