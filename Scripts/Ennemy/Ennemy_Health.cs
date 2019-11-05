@@ -24,12 +24,13 @@ public class Ennemy_Health : HealthComponent
     public override void TakeDamage(int healthPoint)
     {
         healthLevel -= healthPoint;
+        //ennemyMaster.CallEventEventEnnemyDeductHealth(healthLevel);
 
         if (IsDead())
         {
             healthLevel = 0;
             ennemyMaster.CallEventEnnemyDie();
-            Destroy(gameObject/*, Random.Range(10,20)*/);
+            Destroy(gameObject ,Random.Range(10,20));
         }
     }
 }

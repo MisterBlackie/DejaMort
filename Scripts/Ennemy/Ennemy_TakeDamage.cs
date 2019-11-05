@@ -21,7 +21,7 @@ public class Ennemy_TakeDamage : MonoBehaviour
 
     void SetInitialReferences()
     {
-        Ennemy_Master = transform.GetComponent<Ennemy_Master>();
+        Ennemy_Master = transform.root.GetComponent<Ennemy_Master>();
     }
 
     public void ProcessDamage(int damage)
