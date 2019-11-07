@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    public Animator animator;
     private int _healthLevel;
 
     public event EventHandler<OnDamageTakenArgs> OnDamageTaken;
@@ -29,6 +28,12 @@ public class HealthComponent : MonoBehaviour
     private void Start()
     {
         healthLevel = MAX_HEALTH;
+        AchievementManager acvManager = FindObjectOfType<AchievementManager>();
+        Debug.Assert(acvManager != null);
+
+        OnDeath += (s, a) => {
+            acvManager.RegisterEvent(AchievementType.Die);
+        };
     }
 
     public bool IsDead() => healthLevel <= 0;
@@ -39,8 +44,7 @@ public class HealthComponent : MonoBehaviour
         OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
         Debug.Log(healthLevel);
         if (IsDead()) {
-
-            animator.SetTrigger("Fade_Out");
+            Debug.Log("Dead");
             OnDeath?.Invoke(this, new OnDeathArgs());
         }
     }

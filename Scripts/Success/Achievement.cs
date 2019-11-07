@@ -9,9 +9,9 @@ public enum AchievementType {
     Die,
 }
 
-[System.Serializable]
 public class Achievement
 {
+    public int Id { get; private set; }
     public string Name { get; private set; }
     public string Description { get; private set; }
     public int Progress { get; private set; }
@@ -21,18 +21,24 @@ public class Achievement
     public AchievementType Type { get; private set; }
     public bool Unlocked => Progress >= ProgressNeeded;
 
+    public bool hasSomethingChanged { get; private set; } = false;
     public void AddProgress() {
         if (Unlocked)
             return;
 
         Progress++;
+        hasSomethingChanged = true;
         if (Unlocked)
+        {
             onUnlock?.Invoke(this, new AchievementEventArgs(this));
+            WonDate = DateTime.Now;
+        }
     }
 
     event EventHandler<AchievementEventArgs> onUnlock;
 
-    public Achievement(string name, string description, int progressNeeded, AchievementType type, int progressDone = 0, DateTime? dateWon = null) {
+    public Achievement(int Id, string name, string description, int progressNeeded, AchievementType type, int progressDone = 0, DateTime? dateWon = null) {
+        this.Id = Id;
         Name = name;
         Description = description;
         ProgressNeeded = progressNeeded;
