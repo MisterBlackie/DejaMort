@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
+    public Animator animator;
     private int _healthLevel;
 
     public event EventHandler<OnDamageTakenArgs> OnDamageTaken;
@@ -38,7 +39,8 @@ public class HealthComponent : MonoBehaviour
         OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
         Debug.Log(healthLevel);
         if (IsDead()) {
-            Debug.Log("Dead");
+
+            animator.SetTrigger("Fade_Out");
             OnDeath?.Invoke(this, new OnDeathArgs());
         }
     }
