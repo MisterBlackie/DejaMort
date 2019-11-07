@@ -28,12 +28,6 @@ public class HealthComponent : MonoBehaviour
     private void Start()
     {
         healthLevel = MAX_HEALTH;
-        AchievementManager acvManager = FindObjectOfType<AchievementManager>();
-        Debug.Log(acvManager != null);
-
-        OnDeath += (s, a) => {
-            acvManager.RegisterEvent(AchievementType.Die);
-        };
     }
 
     public bool IsDead() => healthLevel <= 0;
