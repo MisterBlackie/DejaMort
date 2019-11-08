@@ -39514,6 +39514,31 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3198725705816280003, guid: 4879a6722d64b574cbea9fbace58b552,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30.400024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198725705816280003, guid: 4879a6722d64b574cbea9fbace58b552,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0025024414
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988299739818438935, guid: 4879a6722d64b574cbea9fbace58b552,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00048828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055476571188021317, guid: 4879a6722d64b574cbea9fbace58b552,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683845726155269178, guid: 4879a6722d64b574cbea9fbace58b552,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.199997
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4879a6722d64b574cbea9fbace58b552, type: 3}
 --- !u!1 &2107535827 stripped
@@ -41737,6 +41762,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6803419062672844983, guid: 241d78575c8a8b9439ab89fa9c1d2947,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -197.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803419062672844983, guid: 241d78575c8a8b9439ab89fa9c1d2947,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 395.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6803419062265427957, guid: 241d78575c8a8b9439ab89fa9c1d2947,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -41852,20 +41887,15 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6803419063012124271, guid: 241d78575c8a8b9439ab89fa9c1d2947,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6803419063012124269, guid: 241d78575c8a8b9439ab89fa9c1d2947,
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6803419062672844983, guid: 241d78575c8a8b9439ab89fa9c1d2947,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -197.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6803419062672844983, guid: 241d78575c8a8b9439ab89fa9c1d2947,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 395.5
       objectReference: {fileID: 0}
     - target: {fileID: 6803419061436944952, guid: 241d78575c8a8b9439ab89fa9c1d2947,
         type: 3}
@@ -41925,6 +41955,11 @@ PrefabInstance:
     - target: {fileID: 6803419062040086306, guid: 241d78575c8a8b9439ab89fa9c1d2947,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803419063012124270, guid: 241d78575c8a8b9439ab89fa9c1d2947,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

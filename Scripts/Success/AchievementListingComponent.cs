@@ -59,8 +59,8 @@ public class AchievementListingComponent : MonoBehaviour
 
         AchievementPanels.Clear();
     }
+    
 
-    // Start is called before the first frame update
     void Awake()
     {
         manager = FindObjectOfType<AchievementManager>();
@@ -69,8 +69,8 @@ public class AchievementListingComponent : MonoBehaviour
         ListPanel = GetComponentInChildren<VerticalLayoutGroup>().gameObject;
         Debug.Assert(ListPanel != null);
 
-        starLocked = Resources.Load<Sprite>("Sprite/star");
-        starUnlocked = Resources.Load<Sprite>("Sprite/starLock");
+        starLocked = Resources.Load<Sprite>("Sprite/starLock");
+        starUnlocked = Resources.Load<Sprite>("Sprite/star");
         AchievementPanels = new List<GameObject>();
     }
 }

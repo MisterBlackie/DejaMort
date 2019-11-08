@@ -7,7 +7,7 @@ using System;
 
 public class AchievementManager : MonoBehaviour
 {
-
+    event EventHandler<AchievementEventArgs> OnAchievementUnlocked;
     public List<Achievement> achievements { get; private set; }
     OracleConnection conn;
     string dsource = "Data Source=(DESCRIPTION="
@@ -19,6 +19,8 @@ public class AchievementManager : MonoBehaviour
     public void RegisterEvent(AchievementType type) {
         foreach (var achievement in achievements.Where(a => a.Type == type && !a.Unlocked)) {
             achievement.AddProgress();
+            if (achievement.Unlocked)
+                OnAchievementUnlocked?.Invoke(this, new AchievementEventArgs(achievement));
         }
     }
 
@@ -65,12 +67,12 @@ public class AchievementManager : MonoBehaviour
             return;
 
         Achievement[] acvToSave = achievements.Where(a => a.hasSomethingChanged).ToArray();
-        string sql = "UPDATE Succes SET UnlockDate = :date, Progress = :progress WHERE Id = :id";
+        string sql = "UPDATE Succes SET UnlockDate = :dat, Progress = :progress WHERE Id = :id";
         foreach (Achievement acv in acvToSave) {
             try
             {
                 OracleParameter id = new OracleParameter(":id", OracleDbType.Int32);
-                OracleParameter date = new OracleParameter(":date", OracleDbType.Date);
+                OracleParameter date = new OracleParameter(":dat", OracleDbType.Date);
                 OracleParameter progress = new OracleParameter(":progress", OracleDbType.Int32);
 
                 id.Value = acv.Id;
@@ -79,9 +81,9 @@ public class AchievementManager : MonoBehaviour
 
                 OracleCommand command = new OracleCommand(sql, conn);
                 command.CommandType = System.Data.CommandType.Text;
-                command.Parameters.Add(id);
                 command.Parameters.Add(date);
                 command.Parameters.Add(progress);
+                command.Parameters.Add(id);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex) {
