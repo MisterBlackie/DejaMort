@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BasicSword : MonoBehaviour, IWeapon
 {
+
+    private Collider myCollider;
     public int Damage { get; private set; } = 10;
 
     public int Durability { get; private set; } = 100;
@@ -22,6 +24,8 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public void Awake()
     {
+        myCollider = GetComponent<Collider>();
+       
         hasBeenPickupOnce = false;
         displayImage = Resources.Load<Sprite>("Sprite/basicSword");
 
@@ -44,12 +48,14 @@ public class BasicSword : MonoBehaviour, IWeapon
     public void OnUse()
     {
         Durability -= 1;
+        
     }
 
     public void Repair(int RepairPts) => throw new System.NotImplementedException();
 
     public void Use() // Équipe l'arme
     {
+        myCollider.enabled = false;
         transform.SetParent(PlayerComponent.instance.rightHandJoint.transform);
         PlayerComponent.instance.equippedItem = this;
         transform.localEulerAngles = ObjectRotation;
@@ -59,6 +65,8 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public int UsePrimary()
     {
+        myCollider.enabled = true;
+
         return isBroken() ? Damage / 2 : Damage;
     }
 
