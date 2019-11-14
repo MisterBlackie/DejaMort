@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161e25ffa3eda7c4ebccfc467aafe57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 0}
+  FirstObjectToSpawn: {fileID: 7461339003281728963, guid: 12649f6a04eed1b4f9c0f49d0eaa9b75,
+    type: 3}
+  SecondObjectToSpawn: {fileID: 7461339003281728963, guid: 8a7a96f85a7bbb24a94b5ce5617a170d,
+    type: 3}
   NumberToSpawn: 10
   proximity: 100
+  delaiSpawn: 100
