@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
+    public SimpleHealthBar healthBar;
+    public Animator animator;
     private int _healthLevel;
-
+   private CharacterMovingComponentv2 joueur;
     public event EventHandler<OnDamageTakenArgs> OnDamageTaken;
     public event EventHandler<OnDeathArgs> OnDeath;
 
@@ -27,6 +29,7 @@ public class HealthComponent : MonoBehaviour
 
     private void Start()
     {
+        joueur = GetComponent<CharacterMovingComponentv2>();
         healthLevel = MAX_HEALTH;
         AchievementManager acvManager = FindObjectOfType<AchievementManager>();
         Debug.Assert(acvManager != null);
@@ -40,12 +43,16 @@ public class HealthComponent : MonoBehaviour
 
     public virtual void TakeDamage(int healthPoint) {
 
+        healthBar.UpdateBar(healthLevel, 100);
         healthLevel -= healthPoint;
         OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
         Debug.Log(healthLevel);
         if (IsDead()) {
             Debug.Log("Dead");
             OnDeath?.Invoke(this, new OnDeathArgs());
+            animator.SetTrigger("Fade_Out");
+            joueur.UnlockMouse();
+            
         }
     }
 
@@ -66,6 +73,7 @@ public class OnDamageTakenArgs
 
 }
 
-public class OnDeathArgs {
+public class OnDeathArgs : CharacterMovingComponentv2 {
+
    
 }

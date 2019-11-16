@@ -18,7 +18,7 @@ public class Bandage : MonoBehaviour, IHealingItem
         displayImage = Resources.Load<Sprite>("Sprite/medkit");
     }
 
-    public void Use()
+    public bool Use()
     {
         PlayerComponent player = FindObjectOfType<PlayerComponent>();
 
@@ -29,6 +29,8 @@ public class Bandage : MonoBehaviour, IHealingItem
         playerHealth.RestoreHealth(healthToRestore);
 
         OnUse();
+
+        return true;
     }
 
     public void OnPickup()

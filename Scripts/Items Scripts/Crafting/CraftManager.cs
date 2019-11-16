@@ -52,18 +52,18 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    public static GameObject craftItem(IItem itemOne, IItem itemTwo)
-    {
-        try
-        {
-            Craft result = checkForCraft(itemOne, itemTwo);
-            return Instantiate(result.result);
-        }
-        catch (CraftNotFoundException ex) // Si aucun craft n'est trouvé
-        {
-            throw ex;
-        }
-    }
+    //public static GameObject craftItem(IItem itemOne, IItem itemTwo)
+    //{
+    //    try
+    //    {
+    //        Craft result = checkForCraft(itemOne, itemTwo);
+    //        return Instantiate(result.result);
+    //    }
+    //    catch (CraftNotFoundException ex) // Si aucun craft n'est trouvé
+    //    {
+    //        throw ex;
+    //    }
+    //}
 
     public static Craft checkForCraft(IItem itemOne, IItem itemTwo)
     {

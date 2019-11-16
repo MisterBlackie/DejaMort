@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Jour_Nuit_Cycle : MonoBehaviour
 {
-
+    public Material skyBoxJour;
+    public Material skyBoxNuit;
     public Light sun;
     public float secondsInFullDay = 120f;
     [Range(0, 1)]
@@ -23,7 +24,14 @@ public class Jour_Nuit_Cycle : MonoBehaviour
         UpdateSun();
 
         currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
-
+        if (currentTimeOfDay >= 0.3f && currentTimeOfDay < 0.8f)
+        {
+            RenderSettings.skybox = skyBoxJour;
+        }
+        else
+        {
+            RenderSettings.skybox = skyBoxNuit;
+        }
         if (currentTimeOfDay >= 1)
         {
             currentTimeOfDay = 0;

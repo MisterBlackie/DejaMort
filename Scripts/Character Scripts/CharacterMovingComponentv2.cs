@@ -65,7 +65,11 @@ public class CharacterMovingComponentv2 : MonoBehaviour
     #region EVENTS
     private void OnCollisionStay(Collision collision)
     {
-        isGrounded = true;
+        if (collision.gameObject.tag == "sol")
+        {
+            isGrounded = true;
+        }
+        
     }
 
     private void OnApplicationFocus(bool focus)
