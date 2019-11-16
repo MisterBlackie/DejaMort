@@ -56,7 +56,7 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public void Repair(int RepairPts) => throw new System.NotImplementedException();
 
-    public void Use() // Équipe l'arme
+    public bool Use() // Équipe l'arme
     {
         myRigibody.mass = 1000;
         myCollider.enabled = false;
@@ -65,6 +65,7 @@ public class BasicSword : MonoBehaviour, IWeapon
         transform.localEulerAngles = ObjectRotation;
         transform.localPosition = HandPosition;
         gameObject.SetActive(true);
+        return true;
     }
 
     public int UsePrimary()

@@ -13,7 +13,7 @@ public interface IItem {
 
     bool hasBeenPickupOnce { get;  }
 
-    void Use();
+    bool Use();
 
     void OnPickup();
 

@@ -2689,37 +2689,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4701023620219376}
     m_Modifications:
-    - target: {fileID: 1000010872065930, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1000012345846188, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
       propertyPath: m_Name
       value: Hands
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012861087828, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
-      propertyPath: m_Name
-      value: m_right_hand_joint
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013576291414, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.057600316
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.05083162
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7142454
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.6956665
       objectReference: {fileID: 0}
     - target: {fileID: 4000014047717240, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2765,16 +2737,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 20000010475845824, guid: 2ac31b04aeaf44c4d979281103193d55,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
     - target: {fileID: 95000013371589110, guid: 2ac31b04aeaf44c4d979281103193d55,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2b7cc7b50af3a4f4aa153bc8feee7be9, type: 2}
+    - target: {fileID: 1000012861087828, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
+      propertyPath: m_Name
+      value: m_right_hand_joint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013576291414, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010872065930, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000010475845824, guid: 2ac31b04aeaf44c4d979281103193d55,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013717710402, guid: 2ac31b04aeaf44c4d979281103193d55,
         type: 3}
       propertyPath: stateModels.Array.data[0].go
@@ -2789,6 +2773,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.057600316
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.05083162
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7142454
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010615296276, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6956665
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac31b04aeaf44c4d979281103193d55, type: 3}

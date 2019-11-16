@@ -103,7 +103,6 @@ public class InventoryComponent : MonoBehaviour
             inventorySpaces[i].setItem(inventory[i].GetComponent<IItem>());
             inventorySpaces[i].showImage();
         }
-
     }
 }
 

@@ -62,6 +62,21 @@ public class PlayerComponent : MonoBehaviour
         transform.position = position;
         
     }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (equippedItem == null)
+                return;
+
+            if (equippedItem is IInterableItem &&
+                !typeof(IWeapon).IsAssignableFrom(equippedItem.GetType()))
+            {
+                equippedItem.UsePrimary();
+            }
+        }
+    }
 }
 
 public class EquippedItemChangedArgs {

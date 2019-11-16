@@ -96,13 +96,16 @@ public class HotbarComponent : MonoBehaviour
         if (inventory[index] != null)
         {
             IItem item = inventory[index].GetComponent<IItem>();
-            item.Use();
-            inventory[index] = null;
-            inventorySpaces[index].HideImage();
+            bool used = item.Use();
+            if (used)
+            {
+                inventory[index] = null;
+                inventorySpaces[index].HideImage();
 
-            ItemUsed?.Invoke(this, new InventoryEventArgs(item));
-
-            return true;
+                ItemUsed?.Invoke(this, new InventoryEventArgs(item));
+                return true;
+            }
+            
         }
 
         return false;
