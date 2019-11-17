@@ -24,7 +24,7 @@ public class Jour_Nuit_Cycle : MonoBehaviour
         UpdateSun();
 
         currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
-        if (currentTimeOfDay >= 0.3f && currentTimeOfDay < 0.8f)
+        if (currentTimeOfDay >= 0.25f && currentTimeOfDay < 0.8f)
         {
             RenderSettings.skybox = skyBoxJour;
         }

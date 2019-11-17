@@ -7,6 +7,7 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     private Collider myCollider;
     private Rigidbody myRigibody;
+    private Light myLight;
     public int Damage { get; private set; } = 10;
 
     public int Durability { get; private set; } = 100;
@@ -25,6 +26,7 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public void Awake()
     {
+        myLight = GetComponent<Light>();
         myRigibody = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
         myRigibody.mass = 0;
@@ -58,6 +60,7 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public bool Use() // Équipe l'arme
     {
+        myLight.enabled = false;
         myRigibody.mass = 1000;
         myCollider.enabled = false;
         transform.SetParent(PlayerComponent.instance.rightHandJoint.transform);

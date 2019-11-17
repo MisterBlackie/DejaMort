@@ -43,8 +43,9 @@ public class HealthComponent : MonoBehaviour
 
     public virtual void TakeDamage(int healthPoint) {
 
-        healthBar.UpdateBar(healthLevel, 100);
+       
         healthLevel -= healthPoint;
+        healthBar.UpdateBar(healthLevel, 100);
         OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
         Debug.Log(healthLevel);
         if (IsDead()) {

@@ -743,7 +743,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.5
+  m_Speed: 2
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -813,7 +813,7 @@ MonoBehaviour:
   sightLayer:
     serializedVersion: 2
     m_Bits: 273
-  detectRadius: 10000
+  detectRadius: 300
 --- !u!114 &7001203651724839469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,8 +862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59b13bd35cc9724d8af5a957660eff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 2
-  attackRamge: 1.6
+  attackRate: 3
+  attackRamge: 1.8
   attackDamge: 30
 --- !u!114 &7001203652521945545
 MonoBehaviour:
@@ -889,6 +889,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f7e45b12dbed34bb895079fad6c911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &2342423545534593145
 MonoBehaviour:
   m_ObjectHideFlags: 0
