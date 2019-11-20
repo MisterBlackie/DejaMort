@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicSword : MonoBehaviour, IWeapon
 {
+    public string itemUniqueCode { get; private set; } = "BASIC_SWORD";
 
     private Collider myCollider;
     private Rigidbody myRigibody;

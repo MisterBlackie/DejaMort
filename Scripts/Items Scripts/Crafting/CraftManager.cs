@@ -5,19 +5,20 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 
+[RequireComponent(typeof(ItemManagerComponent))]
 public class CraftManager : MonoBehaviour
 {
-    public GameObject prefab;
-    private static string craftsFile = "crafts.json";
+    string craftsFile = "crafts.json";
+    ItemManagerComponent itemManager;
 
-    public static List<Craft> crafts { get; private set; } = new List<Craft>();
+    public List<Craft> crafts { get; private set; } = new List<Craft>();
 
-    public static void registerCraft(Craft craft)
+    public void registerCraft(Craft craft)
     {
         crafts.Add(craft);
     }
 
-    public static void LoadCrafts()
+    public void LoadCrafts()
     {
         try
         {
@@ -25,6 +26,7 @@ public class CraftManager : MonoBehaviour
             {
                 string content;
                 content = sr.ReadToEnd();
+                crafts = JsonConvert.DeserializeObject<List<Craft>>(content);
             }
         }
         catch (IOException ex)
@@ -33,7 +35,7 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    public static void SaveCrafts()
+    public void SaveCrafts()
     {
         try
         {
@@ -52,25 +54,27 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    //public static GameObject craftItem(IItem itemOne, IItem itemTwo)
-    //{
-    //    try
-    //    {
-    //        Craft result = checkForCraft(itemOne, itemTwo);
-    //        return Instantiate(result.result);
-    //    }
-    //    catch (CraftNotFoundException ex) // Si aucun craft n'est trouvé
-    //    {
-    //        throw ex;
-    //    }
-    //}
+    public GameObject CraftItem(IItem itemOne, IItem itemTwo)
+    {
+        try
+        {
+            Craft result = checkForCraft(itemOne, itemTwo);
+            GameObject obj = itemManager.GetPrefabOfItem(result.result);
 
-    public static Craft checkForCraft(IItem itemOne, IItem itemTwo)
+            return Instantiate(obj);
+        }
+        catch (CraftNotFoundException ex) // Si aucun craft n'est trouvé
+        {
+            throw ex;
+        }
+    }
+
+    public Craft checkForCraft(IItem itemOne, IItem itemTwo)
     {
         foreach (Craft c in crafts)
         {
-            if (c.itemOne == itemOne.itemName || c.itemOne == itemTwo.itemName &&
-                c.itemTwo == itemOne.itemName || c.itemTwo == itemTwo.itemName)
+            if (c.itemOne == itemOne.itemUniqueCode || c.itemOne == itemTwo.itemUniqueCode &&
+                c.itemTwo == itemOne.itemUniqueCode || c.itemTwo == itemTwo.itemUniqueCode)
                 return c;
         }
 
@@ -80,17 +84,19 @@ public class CraftManager : MonoBehaviour
     public void Awake()
     {
         LoadCrafts();
-        GameObject obj = Instantiate(prefab);
-        string wood = new Wood().itemName;
-        string metal = new MetalPile().itemName;
-       // Craft c = new Craft(wood, metal, obj);
-      //  registerCraft(c);
+        Craft c = new Craft(new Wood(), new MetalPile(), new BasicSword());
+        registerCraft(c);
         //registerCraft(new Craft( , , ));
         //registerCraft(new Craft( , , ));
         //registerCraft(new Craft( , , ));
         //registerCraft(new Craft( , , ));
         //registerCraft(new Craft( , , ));
-        SaveCrafts();
+        //SaveCrafts();
+    }
+
+    private void Start()
+    {
+        itemManager = GetComponent<ItemManagerComponent>();
     }
 
     private void OnApplicationQuit()

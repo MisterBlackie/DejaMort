@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Bandage : MonoBehaviour, IHealingItem
 {
+    public string itemUniqueCode { get; private set; } = "BANDAGE";
     public int healthToRestore { get; private set; } = 20;
     public string itemName { get; private set; } = "Bandage";
     public string description { get; private set; } = "Un bandage qui soigne vos bobos.";

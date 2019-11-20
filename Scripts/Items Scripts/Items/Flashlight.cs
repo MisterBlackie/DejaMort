@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Flashlight : MonoBehaviour, IItem, IInterableItem, IHoldable
 {
+    public string itemUniqueCode { get; private set; } = "FLASHLIGHT";
     public string itemName { get; private set; } = "Lampe de poche";
 
     public string description { get; private set; } = "Voir dans le noir, c'est toujours mieux";

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MetalPile : MonoBehaviour, IItem
 {
+    public string itemUniqueCode { get; private set; } = "METAL_PILE";
     public string itemName { get; private set; } = "Pile de métal";
 
     public string description { get; private set; } = "Un restant de métal utile pour fabriquer des items.";

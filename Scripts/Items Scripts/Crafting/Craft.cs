@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Craft
 {
-    // Nom des items
+    // Code unique des items
     public string itemOne { get; private set; }
     public string itemTwo { get; private set; }
 
-    // Résultat du craft
+    // Résultat du craft (Code Unique)
     public string result { get; private set; }
 
-    public Craft(string itemOneName, string itemTwoName, string resultPrefabName)
+    public Craft(IItem itemOneName, IItem itemTwoName, IItem resultName)
     {
-        itemOne = itemOneName;
-        itemTwo = itemTwoName;
-        result = resultPrefabName;
+        itemOne = itemOneName.itemUniqueCode;
+        itemTwo = itemTwoName.itemUniqueCode;
+        result = resultName.itemUniqueCode;
     }
 }
