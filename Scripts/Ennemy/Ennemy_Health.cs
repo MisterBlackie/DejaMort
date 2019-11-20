@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ennemy_Health : HealthComponent
 {
+    public static int nombreDeMort = 0;
     private Ennemy_Master ennemyMaster;
     private void OnEnable()
     {
@@ -28,6 +29,7 @@ public class Ennemy_Health : HealthComponent
 
         if (IsDead())
         {
+            nombreDeMort++;
             healthLevel = 0;
             ennemyMaster.CallEventEnnemyDie();
             Destroy(gameObject ,Random.Range(10,20));

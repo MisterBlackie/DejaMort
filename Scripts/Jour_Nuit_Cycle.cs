@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Jour_Nuit_Cycle : MonoBehaviour
 {
+    public static int NombreDeJour = 0;
     public Material skyBoxJour;
     public Material skyBoxNuit;
     public Light sun;
@@ -35,7 +36,8 @@ public class Jour_Nuit_Cycle : MonoBehaviour
         if (currentTimeOfDay >= 1)
         {
             currentTimeOfDay = 0;
-        }
+            NombreDeJour++;
+}
     }
 
     void UpdateSun()
