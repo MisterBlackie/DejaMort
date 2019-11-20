@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class AttackComponent : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip[] sword;
+    private AudioClip swordClip;
+
     private Camera _camera;
     public event EventHandler<PrimaryAttackArgs> OnPrimaryAttack;
 
     private void Awake()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         _camera = GetComponentInChildren<Camera>();
         Debug.Assert(_camera != null);
     }
@@ -33,8 +38,14 @@ public class AttackComponent : MonoBehaviour
         if (obj != null)
             obj.TakeDamage(damageDone);
 
+
         OnPrimaryAttack?.Invoke(this, new PrimaryAttackArgs(damageDone));
-      
+
+        int index = UnityEngine.Random.Range(0, sword.Length);
+        swordClip = sword[index];
+        audioSource.clip = swordClip;
+        audioSource.Play();
+
     }
 
     private void UseSecondary() => PlayerComponent.instance.equippedItem.UseSecondary();

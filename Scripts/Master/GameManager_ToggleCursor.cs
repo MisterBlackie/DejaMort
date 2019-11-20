@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager_ToggleCursor : MonoBehaviour
 {
 
-    private GameManager_Master gameManagerMaster;
+    GameManager_Master gameManagerMaster;
     private bool isCursorLoacked = true;
     private void OnEnable()
     {
