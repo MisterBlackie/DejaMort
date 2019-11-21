@@ -1,0 +1,12 @@
+[
+  {
+    "itemOne": "METAL_PILE",
+    "itemTwo": "BATTERIE",
+    "result": "FLASHLIGHT"
+  },
+  {
+    "itemOne": "WOOD_LOG",
+    "itemTwo": "METAL_PILE",
+    "result": "BASIC_SWORD"
+  }
+]

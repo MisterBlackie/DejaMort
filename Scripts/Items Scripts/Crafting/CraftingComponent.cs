@@ -82,7 +82,16 @@ public class CraftingComponent : MonoBehaviour
 
     private void CheckCraft() // Affiche le résultat du craft, avant de faire le craft, si un craft est trouvé
     {
-        GameObject result = IsCasesEmpty() ? null : craftManager.CraftItem(cases[0].item, cases[1].item);
+        GameObject result;
+
+        try
+        {
+            result = IsCasesEmpty() ? null : craftManager.CraftItem(cases[0].item, cases[1].item);
+        } catch (CraftNotFoundException ex)
+        {
+            result = null;
+        }
+
 
         if (result != null)
             preview.ShowImage(result.GetComponent<IItem>().displayImage);
@@ -92,10 +101,16 @@ public class CraftingComponent : MonoBehaviour
 
     public void CraftItem()
     {
-        GameObject result = IsCasesEmpty() ? null : craftManager.CraftItem(cases[0].item, cases[1].item);
+        try
+        {
+            GameObject result = IsCasesEmpty() ? null : craftManager.CraftItem(cases[0].item, cases[1].item);
 
-        if (result != null)
-            onCraftSuccessful?.Invoke(this, new OnCraftSuccessful(result));
+            if (result != null)
+                onCraftSuccessful?.Invoke(this, new OnCraftSuccessful(result));
+        } catch (CraftNotFoundException ex)
+        {
+
+        }
     }
 
     private bool IsCasesEmpty()

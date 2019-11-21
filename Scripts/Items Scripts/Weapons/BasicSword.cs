@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Light))]
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class BasicSword : MonoBehaviour, IWeapon
 {
-    public string itemUniqueCode { get; private set; } = "BASIC_SWORD";
+    public string itemUniqueCode { get => UniqueCode; private set { UniqueCode = value; } }
+    public static string UniqueCode { get; private set; } = "BASIC_SWORD";
 
     private Collider myCollider;
     private Rigidbody myRigibody;

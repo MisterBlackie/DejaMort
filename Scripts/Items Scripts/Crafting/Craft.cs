@@ -5,16 +5,16 @@ using UnityEngine;
 public class Craft
 {
     // Code unique des items
-    public string itemOne { get; private set; }
-    public string itemTwo { get; private set; }
+    public string itemOne { get; set; }
+    public string itemTwo { get; set; }
 
     // Résultat du craft (Code Unique)
-    public string result { get; private set; }
+    public string result { get; set; }
 
-    public Craft(IItem itemOneName, IItem itemTwoName, IItem resultName)
+    public Craft(string itemOneName, string itemTwoName, string resultName)
     {
-        itemOne = itemOneName.itemUniqueCode;
-        itemTwo = itemTwoName.itemUniqueCode;
-        result = resultName.itemUniqueCode;
+        itemOne = itemOneName;
+        itemTwo = itemTwoName;
+        result = resultName;
     }
 }

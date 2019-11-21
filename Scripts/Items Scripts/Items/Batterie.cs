@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Batterie : MonoBehaviour, IItem
 {
-    public string itemUniqueCode { get; private set; } = "BATTERIE";
+    public string itemUniqueCode { get => UniqueCode; private set { UniqueCode = value; } }
+    public static string UniqueCode { get; private set; } = "BATTERIE";
     public string itemName { get; private set; } = "Batterie";
 
     public string description { get; private set; } = "Une source d'énergie miniature.";

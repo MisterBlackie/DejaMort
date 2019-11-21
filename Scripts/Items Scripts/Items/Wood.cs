@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour, IItem
 {
-    public string itemUniqueCode { get; private set; } = "WOOD_LOG";
+    public string itemUniqueCode { get => UniqueCode; private set { UniqueCode = value; } }
+    public static string UniqueCode { get; private set; } = "WOOD_LOG";
     public string itemName { get; private set; } = "Bois";
 
     public string description { get; private set; } = "Une bûche bien solide.";

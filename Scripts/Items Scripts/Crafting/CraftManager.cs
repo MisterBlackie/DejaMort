@@ -8,7 +8,7 @@ using System.Text;
 [RequireComponent(typeof(ItemManagerComponent))]
 public class CraftManager : MonoBehaviour
 {
-    string craftsFile = "crafts.json";
+    string craftsFile = "Assets/crafts.json";
     ItemManagerComponent itemManager;
 
     public List<Craft> crafts { get; private set; } = new List<Craft>();
@@ -27,6 +27,8 @@ public class CraftManager : MonoBehaviour
                 string content;
                 content = sr.ReadToEnd();
                 crafts = JsonConvert.DeserializeObject<List<Craft>>(content);
+                if (crafts == null)
+                    crafts = new List<Craft>();
             }
         }
         catch (IOException ex)
@@ -73,8 +75,8 @@ public class CraftManager : MonoBehaviour
     {
         foreach (Craft c in crafts)
         {
-            if (c.itemOne == itemOne.itemUniqueCode || c.itemOne == itemTwo.itemUniqueCode &&
-                c.itemTwo == itemOne.itemUniqueCode || c.itemTwo == itemTwo.itemUniqueCode)
+            if ((c.itemOne == itemOne.itemUniqueCode || c.itemOne == itemTwo.itemUniqueCode) &&
+                (c.itemTwo == itemOne.itemUniqueCode || c.itemTwo == itemTwo.itemUniqueCode))
                 return c;
         }
 
@@ -84,8 +86,10 @@ public class CraftManager : MonoBehaviour
     public void Awake()
     {
         LoadCrafts();
-        Craft c = new Craft(new Wood(), new MetalPile(), new BasicSword());
-        registerCraft(c);
+        //Craft c = new Craft(Wood.UniqueCode, MetalPile.UniqueCode, BasicSword.UniqueCode);
+        //Craft f = new Craft(MetalPile.UniqueCode, Batterie.UniqueCode, Flashlight.UniqueCode);
+        //registerCraft(f);
+        //registerCraft(c);
         //registerCraft(new Craft( , , ));
         //registerCraft(new Craft( , , ));
         //registerCraft(new Craft( , , ));
