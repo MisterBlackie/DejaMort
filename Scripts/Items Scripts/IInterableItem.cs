@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInterableItem {
+public interface IInterableItem : IHoldable {
     int UsePrimary();
     int UseSecondary();
     void EnleverCollider();

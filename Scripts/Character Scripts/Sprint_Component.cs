@@ -5,7 +5,17 @@ using UnityEngine;
 public class Sprint_Component : MonoBehaviour
 {
     public SimpleHealthBar staminaBar;
-    private float staminaLevel = 200;
+
+    private float _staminalvl = 200;
+    private float staminaLevel { get => _staminalvl;
+        set
+        {
+            if (value > 200)
+                value = 200;
+
+            _staminalvl = value;
+        }
+    }
     private CharacterMovingComponentv2 joueur;
 
     private void Start()
@@ -29,6 +39,7 @@ public class Sprint_Component : MonoBehaviour
         }
         else
         {
+
             joueur.MovementSpeed = 10;
             staminaLevel += 0.1f;
             staminaBar.UpdateBar(staminaLevel, 200);

@@ -7,7 +7,7 @@ public class SwitchScene : MonoBehaviour
 {
 
     public PlayerComponent player;
-
+    private GamaManager_TogglePause pauseManager;
 
     static public bool IsPlayerLoad = false;
     public Text m_Text;
@@ -29,9 +29,15 @@ public class SwitchScene : MonoBehaviour
        
     }
     public void NouvellePartie()
-    {
+    {   
         IsPlayerLoad = false;
         SceneManager.LoadScene("main");
+        pauseManager.GetComponent<GamaManager_TogglePause>();
+        if (pauseManager.isPaused)
+            pauseManager.TogglePause();
+
+        Ennemy_Health.nombreDeMort = 0;
+        Jour_Nuit_Cycle.NombreDeJour = 0;
     }
 
     IEnumerator LoadScene()

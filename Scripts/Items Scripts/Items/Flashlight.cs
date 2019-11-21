@@ -33,7 +33,7 @@ public class Flashlight : MonoBehaviour, IItem, IInterableItem, IHoldable
 
     public void OnUse()
     {
-        
+
     }
 
     public bool Use()
@@ -43,7 +43,12 @@ public class Flashlight : MonoBehaviour, IItem, IInterableItem, IHoldable
         transform.localPosition = HandPosition;
         transform.localEulerAngles = ObjectRotation;
         gameObject.SetActive(true);
-        return true;
+        return false;
+    }
+
+    public void Ranger()
+    {
+        gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update

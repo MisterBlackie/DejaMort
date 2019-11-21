@@ -136,6 +136,12 @@ public class HotbarComponent : MonoBehaviour
         if (inventory[index] != null)
         {
             IItem item = inventory[index].GetComponent<IItem>();
+
+            if (item is IHoldable)
+            {
+                PlayerComponent.instance.equippedItem?.Ranger();
+            }
+
             bool used = item.Use();
             if (used)
             {

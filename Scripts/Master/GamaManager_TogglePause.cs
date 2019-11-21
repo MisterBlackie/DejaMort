@@ -5,7 +5,7 @@ using UnityEngine;
 public class GamaManager_TogglePause : MonoBehaviour
 {
     private GameManager_Master gameManagerMaster;
-    private bool isPaused;
+    public bool isPaused { get; private set; } = false;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class GamaManager_TogglePause : MonoBehaviour
         gameManagerMaster = GetComponent<GameManager_Master>();
     }
 
-    void TogglePause()
+    public void TogglePause()
     {
         if (isPaused)
         {

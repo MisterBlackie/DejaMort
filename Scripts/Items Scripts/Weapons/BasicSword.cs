@@ -40,6 +40,10 @@ public class BasicSword : MonoBehaviour, IWeapon
     }
     public bool isBroken() => Durability <= 0;
 
+    public void Ranger() {
+        gameObject.SetActive(false);
+    }
+
     public void OnDrop()
     {
         gameObject.SetActive(true);
@@ -69,7 +73,7 @@ public class BasicSword : MonoBehaviour, IWeapon
         transform.localEulerAngles = ObjectRotation;
         transform.localPosition = HandPosition;
         gameObject.SetActive(true);
-        return true;
+        return false;
     }
 
     public int UsePrimary()
