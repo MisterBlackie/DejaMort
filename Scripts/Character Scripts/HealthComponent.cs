@@ -47,9 +47,9 @@ public class HealthComponent : MonoBehaviour
         healthLevel -= healthPoint;
         healthBar.UpdateBar(healthLevel, 100);
         OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
-        Debug.Log(healthLevel);
+       // Debug.Log(healthLevel);
         if (IsDead()) {
-            Debug.Log("Dead");
+           // Debug.Log("Dead");
             OnDeath?.Invoke(this, new OnDeathArgs());
             animator.SetTrigger("Fade_Out");
             joueur.UnlockMouse();
