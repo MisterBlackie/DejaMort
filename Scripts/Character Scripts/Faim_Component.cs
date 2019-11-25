@@ -60,4 +60,8 @@ public class Faim_Component : MonoBehaviour
        
     }
 
+    public void Eat(float foodLvl)
+    {
+        faimLevel += foodLvl;
+    }
 }

@@ -9,6 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(AnimationTriggerComponent))]
 [RequireComponent(typeof(AttackComponent))]
 [RequireComponent(typeof(HotbarComponent))]
+[RequireComponent(typeof(Faim_Component))]
+[RequireComponent(typeof(ThirstComponent))]
 public class PlayerComponent : MonoBehaviour
 {
     private HealthComponent vie;

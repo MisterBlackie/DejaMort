@@ -51,9 +51,8 @@ public class Flashlight : MonoBehaviour, IItem, IInterableItem, IHoldable
     {
         gameObject.SetActive(false);
     }
-
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
         flashlight = GetComponentInChildren<Light>();
         displayImage = Resources.Load<Sprite>("Sprite/flashlight");
