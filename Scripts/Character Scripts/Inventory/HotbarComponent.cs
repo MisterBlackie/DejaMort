@@ -19,6 +19,9 @@ public class HotbarComponent : MonoBehaviour
     private CraftingComponent crafting;
     private int[] indexOfItemsInCraft;
 
+    ThirstComponent thirstComponent;
+    Faim_Component hungerComponent;
+
     public event EventHandler<InventoryEventArgs> ItemAdded;
     public event EventHandler<InventoryEventArgs> ItemUsed;
     public event EventHandler<InventoryEventArgs> ItemDropped;
@@ -30,6 +33,9 @@ public class HotbarComponent : MonoBehaviour
         inventory = new List<GameObject>();
         for (int i = 0; i < inventorySpaces.Count; i++)
             inventory.Insert(i, null);
+
+        thirstComponent = GetComponent<ThirstComponent>();
+        hungerComponent = GetComponent<Faim_Component>();
     }
 
     private void Start()
@@ -140,6 +146,12 @@ public class HotbarComponent : MonoBehaviour
             if (item is IHoldable)
             {
                 PlayerComponent.instance.equippedItem?.Ranger();
+            }
+            else if (item is IFood)
+            {
+                IFood i = item as IFood;
+                thirstComponent?.Drink(i.WaterLevel);
+                hungerComponent?.Eat(i.FoodLevel);
             }
 
             bool used = item.Use();

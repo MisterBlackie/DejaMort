@@ -12,7 +12,7 @@ public class ThirstComponent : MonoBehaviour
     [SerializeField]
     [InspectorName("Nb pts de soif")]
     [Tooltip("Le nombre de point de soif à retirer à chaque update de la soif")]
-    private int ThirstToRemove = 5;
+    private int ThirstToRemove = 50;
 
     [SerializeField]
     [InspectorName("Barre de soif")]
@@ -63,12 +63,17 @@ public class ThirstComponent : MonoBehaviour
     private void UpdateThirst()
     {
         ThirstLevel -= ThirstToRemove;
+        UpdateBar();
+    }
+    private void UpdateBar()
+    {
         thirstBar.UpdateBar(ThirstLevel, ThirstPtsMax);
     }
 
     public void Drink(int waterLvl)
     {
         ThirstLevel += waterLvl;
+        UpdateBar();
     }
 
 

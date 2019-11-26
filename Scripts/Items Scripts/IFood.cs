@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 public interface IFood : IItem
 {
-    int FoodLevel { get; set; }
-    int WaterLevel { get; set; }
+    int FoodLevel { get; }
+    int WaterLevel { get; }
 }
