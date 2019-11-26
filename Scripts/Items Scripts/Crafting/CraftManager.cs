@@ -90,11 +90,6 @@ public class CraftManager : MonoBehaviour
         //Craft f = new Craft(MetalPile.UniqueCode, Batterie.UniqueCode, Flashlight.UniqueCode);
         //registerCraft(f);
         //registerCraft(c);
-        //registerCraft(new Craft( , , ));
-        //registerCraft(new Craft( , , ));
-        //registerCraft(new Craft( , , ));
-        //registerCraft(new Craft( , , ));
-        //registerCraft(new Craft( , , ));
         //SaveCrafts();
     }
 

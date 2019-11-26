@@ -7,6 +7,8 @@ public enum AchievementType {
     Jump,
     Attack,
     Die,
+    Craft,
+    Kill
 }
 
 public class Achievement

@@ -17,7 +17,7 @@ public class HotbarComponent : MonoBehaviour
 
     [SerializeField]
     private CraftingComponent crafting;
-    private int[] indexOfItemsInCraft;
+    private int[] indexOfItemsInCraft; // index des items dans le GUI de craft
 
     ThirstComponent thirstComponent;
     Faim_Component hungerComponent;
@@ -42,7 +42,7 @@ public class HotbarComponent : MonoBehaviour
     {
         Debug.Assert(crafting != null);
 
-        indexOfItemsInCraft = new int[crafting.NbSlotForCraft];
+        ResetItemsInCraft();
 
         crafting.onCraftSuccessful += (s, a) =>
         {
@@ -53,8 +53,22 @@ public class HotbarComponent : MonoBehaviour
 
             AddItem(a.result);
 
-            indexOfItemsInCraft = new int[crafting.NbSlotForCraft];
+            ResetItemsInCraft();
         };
+
+        crafting.onFieldReset += (s, a) =>
+        {
+            ResetItemsInCraft();
+        };
+    }
+
+    void ResetItemsInCraft()
+    {
+        indexOfItemsInCraft = new int[crafting.NbSlotForCraft];
+        for (int i = 0; i < crafting.NbSlotForCraft; i++)
+        {
+            indexOfItemsInCraft[i] = -1;
+        }
     }
 
     void Update()
@@ -163,7 +177,7 @@ public class HotbarComponent : MonoBehaviour
                 ItemUsed?.Invoke(this, new InventoryEventArgs(item));
                 return true;
             }
-            
+
         }
 
         return false;
@@ -181,7 +195,17 @@ public class HotbarComponent : MonoBehaviour
 
     public void QueueItemForCraft(int index)
     {
-        if (inventory[index] != null)
-            indexOfItemsInCraft[ crafting.SetItem(inventory[index].GetComponent<IItem>()) ] = index;
+        if (inventory[index] != null && !isInQueue(index))
+            indexOfItemsInCraft[crafting.SetItem(inventory[index].GetComponent<IItem>())] = index;
+    }
+
+    private bool isInQueue(int index)
+    {
+        foreach(int i in indexOfItemsInCraft)
+        {
+            if (i == index)
+                return true;
+        }
+        return false;
     }
 }

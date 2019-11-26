@@ -12,7 +12,7 @@ public class ThirstComponent : MonoBehaviour
     [SerializeField]
     [InspectorName("Nb pts de soif")]
     [Tooltip("Le nombre de point de soif à retirer à chaque update de la soif")]
-    private int ThirstToRemove = 50;
+    private int ThirstToRemove = 40;
 
     [SerializeField]
     [InspectorName("Barre de soif")]
@@ -52,7 +52,7 @@ public class ThirstComponent : MonoBehaviour
             compteurUpdate = 0;
         }
 
-        if (ThirstToRemove == 0)
+        if (ThirstLevel == 0)
         {
             health.TakeDamage(damageToGive);
         }

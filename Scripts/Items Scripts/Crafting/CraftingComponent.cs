@@ -10,6 +10,8 @@ public class CraftingComponent : MonoBehaviour
     CraftingCaseComponent[] cases;
     CraftPreviewComponent preview;
 
+    AchievementManager achievement;
+
     public event EventHandler<OnCraftSuccessful> onCraftSuccessful;
     public event EventHandler<EventArgs> onFieldReset; // Appeler quand les champs d'items sont reset
 
@@ -42,7 +44,10 @@ public class CraftingComponent : MonoBehaviour
         preview = GetComponentInChildren<CraftPreviewComponent>();
         Debug.Assert(preview != null);
 
+        achievement = FindObjectOfType<AchievementManager>();
+
         onCraftSuccessful += (s, a) => ResetField();
+        onCraftSuccessful += (s, a) => achievement.RegisterEvent(AchievementType.Craft);
     }
 
     public void ToggleUI()
@@ -68,7 +73,7 @@ public class CraftingComponent : MonoBehaviour
         int index;
         if (cases[0].item == null)
             index = 0;
-        else if (cases[1] == null)
+        else if (cases[1].item == null)
             index = 1;
         else
             index = lastItemChanged++;

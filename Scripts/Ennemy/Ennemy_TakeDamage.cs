@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ennemy_TakeDamage : MonoBehaviour
 {
     private Ennemy_Master Ennemy_Master;
+    private AchievementManager achievement;
     public int damageMultiplier = 1;
     public bool shouldRemoveCollider;
 
@@ -12,11 +13,23 @@ public class Ennemy_TakeDamage : MonoBehaviour
     {
         SetInitialReferences();
         Ennemy_Master.EventEnnemyDie += RemoveThis;
+        Ennemy_Master.EventEnnemyDie += OnDie;
+    }
+
+    private void Awake()
+    {
+        achievement = FindObjectOfType<AchievementManager>();
+        Debug.Assert(achievement != null);
+    }
+    private void OnDie()
+    {
+        achievement.RegisterEvent(AchievementType.Kill);
     }
 
     private void OnDisable()
     {
         Ennemy_Master.EventEnnemyDie -= RemoveThis;
+        Ennemy_Master.EventEnnemyDie -= OnDie;
     }
 
     void SetInitialReferences()

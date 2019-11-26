@@ -25,6 +25,8 @@ public class ItemManagerComponent : MonoBehaviour
         }
 
         timeBeforeSpawning = timeBetweenEachItemSpawn;
+
+        instantiateItems();
     }
 
     private void Update()
