@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnerV3 : MonoBehaviour
 {
-    public static int NombreSpawner = 0;
     public GameObject FirstObjectToSpawn;
     public GameObject SecondObjectToSpawn;
     public GameObject ThirdObjectToSpawn;
@@ -17,7 +16,6 @@ public class SpawnerV3 : MonoBehaviour
     private Vector3 spawnPosition;
     private float spawnNiveau1Delai = 180;
     private float spawnNiveau2Delai = 360;
-    const int MAX = 50;
     //private int Compteur = 0;
     //const int Max = 30;
 
@@ -40,11 +38,6 @@ public class SpawnerV3 : MonoBehaviour
 
     void CheckDistance()
     {
-
-        if (NombreSpawner < MAX)
-        {
-
-     
         if (Time.time > delaiSpawn && delaiSpawn < spawnNiveau1Delai)
         {
             //delaiSpawn = Time.time + checkrate;
@@ -52,7 +45,6 @@ public class SpawnerV3 : MonoBehaviour
             {
                 SpawnObject();
                 delaiSpawn += delaiSpawn;
-                NombreSpawner++;
                 //this.enabled = false;
                 //Compteur++;
             }
@@ -63,7 +55,8 @@ public class SpawnerV3 : MonoBehaviour
             {
                 SpawnObject2();
                 spawnNiveau1Delai += delaiSpawn;
-                NombreSpawner++;
+                //this.enabled = false;
+                //Compteur++;
             }
         }
         else if (Time.time > spawnNiveau2Delai)
@@ -72,10 +65,9 @@ public class SpawnerV3 : MonoBehaviour
             {
                 SpawnObject3();
                 spawnNiveau2Delai += delaiSpawn;
-                NombreSpawner++;
+                //this.enabled = false;
+                //Compteur++;
             }
-        }
-
         }
     }
 

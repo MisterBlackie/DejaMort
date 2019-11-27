@@ -38,7 +38,6 @@ public class SwitchScene : MonoBehaviour
 
         Ennemy_Health.nombreDeMort = 0;
         Jour_Nuit_Cycle.NombreDeJour = 0;
-        SpawnerV3.NombreSpawner = 0;
     }
 
     IEnumerator LoadScene()

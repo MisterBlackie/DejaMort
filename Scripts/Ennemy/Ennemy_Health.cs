@@ -33,7 +33,6 @@ public class Ennemy_Health : HealthComponent
             healthLevel = 0;
             ennemyMaster.CallEventEnnemyDie();
             Destroy(gameObject ,Random.Range(10,20));
-            SpawnerV3.NombreSpawner--;
         }
     }
 }
