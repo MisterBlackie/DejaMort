@@ -46,16 +46,15 @@ public class ThirstComponent : MonoBehaviour
 
     private void Update()
     {
-        if (ThirstLevel > 0 && compteurUpdate >= TIME_BEFORE_THIRST_UPDATE)
+        if (compteurUpdate >= TIME_BEFORE_THIRST_UPDATE)
         {
             UpdateThirst();
             compteurUpdate = 0;
         }
 
-        if (ThirstLevel == 0 && compteurUpdate >= TIME_BEFORE_THIRST_UPDATE)
+        if (ThirstLevel == 0)
         {
             health.TakeDamage(damageToGive);
-            compteurUpdate = 0;
         }
 
         compteurUpdate += Time.deltaTime;

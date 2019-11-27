@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Light))]
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-public class BasicSword : MonoBehaviour, IWeapon
+public class LongSword : MonoBehaviour, IWeapon
 {
     public string itemUniqueCode { get => UniqueCode; private set { UniqueCode = value; } }
-    public static string UniqueCode { get; private set; } = "BASIC_SWORD";
+    public static string UniqueCode { get; private set; } = "LONG_SWORD";
 
     private Collider myCollider;
     private Rigidbody myRigibody;
-    private Light myLight;
-    public int Damage { get; private set; } = 5;
+    public int Damage { get; private set; } = 17;
 
     public int Durability { get; private set; } = 100;
 
-    public string itemName { get; private set; } = "Vielle épée";
+    public string itemName { get; private set; } = "Épée longue";
 
-    public string description { get; private set; } = "Une vielle épée qui ne fait pas beaucoup de dommage.";
+    public string description { get; private set; } = "Une longue épée qui fait mal.";
 
     public Sprite displayImage { get; private set; }
 
@@ -31,20 +29,20 @@ public class BasicSword : MonoBehaviour, IWeapon
 
     public void Awake()
     {
-        myLight = GetComponent<Light>();
         myRigibody = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
         myRigibody.mass = 0;
-       
-        hasBeenPickupOnce = false;
-        displayImage = Resources.Load<Sprite>("Sprite/basicSword");
 
-        HandPosition = new Vector3(0.000801f, 0.000545f, -0.000149f);
-        ObjectRotation = new Vector3(-14.181f, 87.466f, 86.32001f);
+        hasBeenPickupOnce = false;
+        displayImage = Resources.Load<Sprite>("Sprite/longsword");
+
+        HandPosition = new Vector3(0.00073f, 0.00084f, -0.0001f);
+        ObjectRotation = new Vector3(-2.728f, 83.521f, 86.08701f);
     }
     public bool isBroken() => Durability <= 0;
 
-    public void Ranger() {
+    public void Ranger()
+    {
         gameObject.SetActive(false);
     }
 
@@ -62,14 +60,13 @@ public class BasicSword : MonoBehaviour, IWeapon
     public void OnUse()
     {
         Durability -= 1;
-        
+
     }
 
     public void Repair(int RepairPts) => throw new System.NotImplementedException();
 
     public bool Use() // Équipe l'arme
     {
-        myLight.enabled = false;
         myRigibody.mass = 1000;
         myCollider.enabled = false;
         transform.SetParent(PlayerComponent.instance.rightHandJoint.transform);
