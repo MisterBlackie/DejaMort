@@ -127,6 +127,11 @@ public class HotbarComponent : MonoBehaviour
         {
             IItem item = itemObject.GetComponent<IItem>();
 
+            if (item.hasBeenPickupOnce)
+            {
+                return itemAdded;
+            }
+
             for (int i = 0; i < inventory.Count && !itemAdded; i++)
             {
                 if (inventory[i] == null)
