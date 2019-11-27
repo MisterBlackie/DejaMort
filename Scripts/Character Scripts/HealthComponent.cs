@@ -45,7 +45,7 @@ public class HealthComponent : MonoBehaviour
 
        
         healthLevel -= healthPoint;
-        healthBar.UpdateBar(healthLevel, 100);
+        UpdateBar();
         OnDamageTaken?.Invoke(this, new OnDamageTakenArgs(healthPoint, healthLevel));
        // Debug.Log(healthLevel);
         if (IsDead()) {
@@ -59,6 +59,12 @@ public class HealthComponent : MonoBehaviour
 
     public void RestoreHealth(int HealhPoint) {
         healthLevel += HealhPoint;
+        UpdateBar();
+    }
+
+    public void UpdateBar()
+    {
+        healthBar.UpdateBar(healthLevel, 100);
     }
 }
 

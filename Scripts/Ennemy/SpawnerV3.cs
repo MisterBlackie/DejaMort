@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class SpawnerV3 : MonoBehaviour
 {
+    public static int NombreSpawner = 0;
     public GameObject FirstObjectToSpawn;
     public GameObject SecondObjectToSpawn;
     public GameObject ThirdObjectToSpawn;
     public int NumberToSpawn;
     public float proximity;
     private float checkrate;
-    public float delaiSpawn = 30; 
+    public float delaiSpawn = 30;
     private Transform myTransform;
     private Transform playerTransform;
     private Vector3 spawnPosition;
     private float spawnNiveau1Delai = 180;
     private float spawnNiveau2Delai = 360;
+    const int MAX = 50;
     //private int Compteur = 0;
     //const int Max = 30;
 
@@ -38,36 +40,42 @@ public class SpawnerV3 : MonoBehaviour
 
     void CheckDistance()
     {
-        if (Time.time > delaiSpawn && delaiSpawn < spawnNiveau1Delai)
+
+        if (NombreSpawner < MAX)
         {
-            //delaiSpawn = Time.time + checkrate;
-            if (Vector3.Distance(myTransform.position, playerTransform.position) > proximity )
+
+
+            if (Time.time > delaiSpawn && delaiSpawn < spawnNiveau1Delai)
             {
-                SpawnObject();
-                delaiSpawn += delaiSpawn;
-                //this.enabled = false;
-                //Compteur++;
+                //delaiSpawn = Time.time + checkrate;
+                if (Vector3.Distance(myTransform.position, playerTransform.position) > proximity)
+                {
+                    SpawnObject();
+                    delaiSpawn += delaiSpawn;
+                    NombreSpawner++;
+                    //this.enabled = false;
+                    //Compteur++;
+                }
             }
-        }
-        else if(Time.time > spawnNiveau1Delai && spawnNiveau1Delai < spawnNiveau2Delai)
-        {
-            if (Vector3.Distance(myTransform.position, playerTransform.position) > proximity)
+            else if (Time.time > spawnNiveau1Delai && spawnNiveau1Delai < spawnNiveau2Delai)
             {
-                SpawnObject2();
-                spawnNiveau1Delai += delaiSpawn;
-                //this.enabled = false;
-                //Compteur++;
+                if (Vector3.Distance(myTransform.position, playerTransform.position) > proximity)
+                {
+                    SpawnObject2();
+                    spawnNiveau1Delai += delaiSpawn;
+                    NombreSpawner++;
+                }
             }
-        }
-        else if (Time.time > spawnNiveau2Delai)
-        {
-            if (Vector3.Distance(myTransform.position, playerTransform.position) > proximity)
+            else if (Time.time > spawnNiveau2Delai)
             {
-                SpawnObject3();
-                spawnNiveau2Delai += delaiSpawn;
-                //this.enabled = false;
-                //Compteur++;
+                if (Vector3.Distance(myTransform.position, playerTransform.position) > proximity)
+                {
+                    SpawnObject3();
+                    spawnNiveau2Delai += delaiSpawn;
+                    NombreSpawner++;
+                }
             }
+
         }
     }
 
@@ -77,10 +85,10 @@ public class SpawnerV3 : MonoBehaviour
         {
             spawnPosition = myTransform.position + Random.insideUnitSphere * 5;
 
-          //  Instantiate(objectToSpawn, spawnPosition, myTransform.rotation);
-           Vector3 newSpawnPos = new Vector3(spawnPosition.x, 0.5f, spawnPosition.z); 
+            //  Instantiate(objectToSpawn, spawnPosition, myTransform.rotation);
+            Vector3 newSpawnPos = new Vector3(spawnPosition.x, 0.5f, spawnPosition.z);
             Instantiate(FirstObjectToSpawn, newSpawnPos, transform.rotation);
-          
+
         }
     }
 

@@ -28,16 +28,18 @@ public class SwitchScene : MonoBehaviour
 
        
     }
+
     public void NouvellePartie()
     {   
         IsPlayerLoad = false;
         SceneManager.LoadScene("main");
-        pauseManager.GetComponent<GamaManager_TogglePause>();
+       // pauseManager.GetComponent<GamaManager_TogglePause>();
         if (pauseManager.isPaused)
             pauseManager.TogglePause();
 
         Ennemy_Health.nombreDeMort = 0;
         Jour_Nuit_Cycle.NombreDeJour = 0;
+        SpawnerV3.NombreSpawner = 0;
     }
 
     IEnumerator LoadScene()

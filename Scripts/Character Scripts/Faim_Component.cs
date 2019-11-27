@@ -4,64 +4,78 @@ using UnityEngine;
 
 public class Faim_Component : MonoBehaviour
 {
-    HealthComponent vieJoueur;
-    public SimpleHealthBar faimBar;
-    const float MAXFAIM = 2000;
-    int Compteur = 0;
+    [SerializeField]
+    [InspectorName("Secondes avant update")]
+    [Tooltip("Le nombre de seconde avant d'update le niveau de faim")]
+    private float TIME_BEFORE_FAIM_UPDATE = 3;
+
+    [SerializeField]
+    [InspectorName("Nb pts de faim")]
+    [Tooltip("Le nombre de point de faim à retirer à chaque update de la faim")]
+    private int FaimToRemove = 20;
+
+    [SerializeField]
+    [InspectorName("Barre de faim")]
+    [Tooltip("La barre sur l'UI reliée à la faim")]
+    private SimpleHealthBar faimBar;
+
+    [SerializeField]
+    private int damageToGive = 5;
+
+    HealthComponent health;
+
+    private const int FaimPtsMax = 1000;
+
+    private int faimLevel = FaimPtsMax;
+    public int FaimLevel
+    {
+        get => faimLevel;
+        private set
+        {
+            value = Mathf.Clamp(value, 0, FaimPtsMax);
+            faimLevel = value;
+        }
+    }
+
+    private float compteurUpdate = 0;
 
     private void Start()
     {
-        vieJoueur = GetComponent<HealthComponent>();
+        health = GetComponent<HealthComponent>();
+        Debug.Assert(health != null, "Pour utiliser faim_component, le game object doit avoir un HealthComponent");
+        Debug.Assert(faimBar != null, "Aucune barre de faim spécifiée.");
     }
-    private float _faimLevel = MAXFAIM;
-    private float faimLevel
+
+    private void Update()
     {
-        get => _faimLevel;
-        set
+        if (FaimLevel > 0 && compteurUpdate >= TIME_BEFORE_FAIM_UPDATE)
         {
-            if (value > MAXFAIM)
-                value = MAXFAIM;
-
-            _faimLevel = value;
+            UpdateFaim();
+            compteurUpdate = 0;
         }
-    }
-    private CharacterMovingComponentv2 joueur;
 
-   
-    // Update is called once per frame
-    void Update()
+        if (FaimLevel == 0 && compteurUpdate >= TIME_BEFORE_FAIM_UPDATE)
+        {
+            health.TakeDamage(damageToGive);
+            compteurUpdate = 0;
+        }
+
+        compteurUpdate += Time.deltaTime;
+    }
+
+    private void UpdateFaim()
     {
-        Famine();
-        Compteur++;
-
+        FaimLevel -= FaimToRemove;
+        UpdateBar();
     }
-
-    void Famine()
+    private void UpdateBar()
     {
-
-        if (faimLevel > 0)
-        {
-            faimLevel -= 0.5f;
-            faimBar.UpdateBar(faimLevel, MAXFAIM);
-            Compteur = 0;
-
-        }
-        else if (Compteur == 120)
-        {
-
-        
-        
-            vieJoueur.TakeDamage(5);
-            Compteur = 0;
-
-
-        }
-           
-       
+        faimBar.UpdateBar(FaimLevel, FaimPtsMax);
     }
 
-    public void Eat(float foodLvl)
+    public void Eat(int foodLvl)
     {
         faimLevel += foodLvl;
+        UpdateBar();
     }
 }

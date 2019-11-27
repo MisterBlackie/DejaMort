@@ -27,9 +27,11 @@ public class ThirstComponent : MonoBehaviour
     private const int ThirstPtsMax = 1000;
 
     private int thirstLevel = ThirstPtsMax;
-    public int ThirstLevel {
+    public int ThirstLevel
+    {
         get => thirstLevel;
-        private set {
+        private set
+        {
             value = Mathf.Clamp(value, 0, ThirstPtsMax);
             thirstLevel = value;
         }
@@ -46,15 +48,16 @@ public class ThirstComponent : MonoBehaviour
 
     private void Update()
     {
-        if (compteurUpdate >= TIME_BEFORE_THIRST_UPDATE)
+        if (ThirstLevel > 0 && compteurUpdate >= TIME_BEFORE_THIRST_UPDATE)
         {
             UpdateThirst();
             compteurUpdate = 0;
         }
 
-        if (ThirstLevel == 0)
+        if (ThirstLevel == 0 && compteurUpdate >= TIME_BEFORE_THIRST_UPDATE)
         {
             health.TakeDamage(damageToGive);
+            compteurUpdate = 0;
         }
 
         compteurUpdate += Time.deltaTime;
