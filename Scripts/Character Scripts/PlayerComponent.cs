@@ -35,11 +35,11 @@ public class PlayerComponent : MonoBehaviour
     private void OnEnable()
     {
         vie = GetComponent<HealthComponent>();
-        if (SwitchScene.IsPlayerLoad == true )
+        if (SwitchScene.IsPlayerLoad == true)
         {
             LoadPlayer();
         }
-        
+
     }
 
     private void Awake()
@@ -49,20 +49,23 @@ public class PlayerComponent : MonoBehaviour
 
     public void SavePlayer()
     {
-      
-        SaveSystem.SavePlayer( this);
+
+        SaveSystem.SavePlayer(this , vie);
     }
 
     public void LoadPlayer()
     {
+       
         PlayerData data = SaveSystem.LoadPlayer();
+        vie._healthLevel = data.health;
+        vie.healthBar.UpdateBar(data.health , 100);
         Vector3 position;
 
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
         transform.position = position;
-        
+
     }
 
     private void Update()

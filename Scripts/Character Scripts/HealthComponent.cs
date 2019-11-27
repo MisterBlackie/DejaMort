@@ -7,7 +7,7 @@ public class HealthComponent : MonoBehaviour
 {
     public SimpleHealthBar healthBar;
     public Animator animator;
-    private int _healthLevel;
+    public int _healthLevel;
    private CharacterMovingComponentv2 joueur;
     public event EventHandler<OnDamageTakenArgs> OnDamageTaken;
     public event EventHandler<OnDeathArgs> OnDeath;
@@ -29,8 +29,13 @@ public class HealthComponent : MonoBehaviour
 
     private void Start()
     {
+
+        if (!SwitchScene.IsPlayerLoad == true)
+        {
+            healthLevel = MAX_HEALTH;
+        }
         joueur = GetComponent<CharacterMovingComponentv2>();
-        healthLevel = MAX_HEALTH;
+       
         AchievementManager acvManager = FindObjectOfType<AchievementManager>();
         Debug.Assert(acvManager != null);
 
