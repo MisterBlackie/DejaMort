@@ -31,8 +31,8 @@ public class Ennemy_ColisionField : MonoBehaviour
        
             if (rigibodyStrikingMe.mass >= massRequirement && other.GetComponent<Rigidbody>().tag == "arme" )
             {
-                //damageToApply = (int)(damageFactor * rigibodyStrikingMe.mass );
-                ennemyMaster.CallEventEventEnnemyDeductHealth(other.GetComponent<IWeapon>().Damage);
+                damageToApply = (int)(damageFactor * rigibodyStrikingMe.mass );
+                ennemyMaster.CallEventEventEnnemyDeductHealth(damageMultiplier);
                 PlayerComponent.instance.equippedItem.EnleverCollider();
             }
         }

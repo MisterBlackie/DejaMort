@@ -13,7 +13,7 @@ public class BasicSword : MonoBehaviour, IWeapon
     private Collider myCollider;
     private Rigidbody myRigibody;
     private Light myLight;
-    public int Damage { get; private set; } = 5;
+    public int Damage { get; private set; } = 10;
 
     public int Durability { get; private set; } = 100;
 
