@@ -9701,7 +9701,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10093,7 +10093,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ae42341967a3c458fac98a375685b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TIME_BEFORE_FAIM_UPDATE: 1
+  FaimToRemove: 5
   faimBar: {fileID: 827847566}
+  damageToGive: 5
 --- !u!114 &537468851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14084,7 +14087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0880d9ac631f24f409114af2781b3480, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -116.10392
+      value: -116.17
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0880d9ac631f24f409114af2781b3480, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14132,7 +14135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0880d9ac631f24f409114af2781b3480, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.0233
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0880d9ac631f24f409114af2781b3480, type: 3}
       propertyPath: m_LocalScale.z
@@ -28209,6 +28212,9 @@ GameObject:
   - component: {fileID: 1644643411}
   - component: {fileID: 1644643412}
   - component: {fileID: 1644643413}
+  - component: {fileID: 1644643414}
+  - component: {fileID: 1644643415}
+  - component: {fileID: 1644643416}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -28404,6 +28410,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DayCounter: {fileID: 1337671228}
+--- !u!114 &1644643414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644643399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63faea11af5aa140b6fbd6a0d2b2ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreDeFlag: 1000
+  ObjectToSpawn: {fileID: 2216972739479474852, guid: 0af1a2470e2cffc4db341bad7430a6e8,
+    type: 3}
+  myTerrain: {fileID: 1809293383}
+  TerrainLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!114 &1644643415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644643399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63faea11af5aa140b6fbd6a0d2b2ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreDeFlag: 1000
+  ObjectToSpawn: {fileID: 1543348285689931946, guid: 1c879194ccd3c8e478ff6de7e1f9ca67,
+    type: 3}
+  myTerrain: {fileID: 1809293383}
+  TerrainLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &1644643416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644643399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63faea11af5aa140b6fbd6a0d2b2ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreDeFlag: 200
+  ObjectToSpawn: {fileID: 6741713415547765986, guid: 2ed9778cfe6b9ce468f5c553c0696d0a,
+    type: 3}
+  myTerrain: {fileID: 1809293383}
+  TerrainLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1646297365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3821086851954406842, guid: 72f2491742c80ba42aac2e12789d95a6,
@@ -31298,8 +31361,8 @@ Terrain:
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
-  m_DetailObjectDensity: 1
+  m_DetailObjectDistance: 43
+  m_DetailObjectDensity: 0.412
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
@@ -34574,8 +34637,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
